@@ -63,38 +63,29 @@
             <tr>
                 <th><a href="#" onClick="newAdoption()">New</a></th>
                 <th></th>
-                <th>id</th>
-                <th>fname</th>
-                <th>lname</th>
-                <th>homeworld</th>
-                <th>age</th>
+                <th>adoptionID</th>
+                <th>customerID</th>
+                <th>catID</th>
+                <th>adoptionDate</th>
+                <th>adoptionFee</th>
             </tr>
             <tr>
                 <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
                 <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
-                <td align="right">1</td>
-                <td>William</td>
-                <td align="right">Adama</td>
-                <td>Caprica</td>
-                <td>61</td>
-            </tr>
-            <tr>
-                <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
-                <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
-                <td align="right">2</td>
-                <td>Lee</td>
-                <td align="right">Adama</td>
-                <td>Caprica</td>
-                <td>30</td>
-            </tr>
-            <tr>
-                <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
-                <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
+                <td>1</td>
+                <td>2</td>
                 <td>3</td>
-                <td>Laura</td>
-                <td align="right">Roslin</td>
-                <td>Caprica</td>
-                <td><em>NULL</em></td>
+                <td>7/3/2023</td>
+                <td>$30.00</td>
+            </tr>
+            <tr>
+                <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
+                <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
+                <td>2</td>
+                <td>4</td>
+                <td>2</td>
+                <td>8/24/2024</td>
+                <td>$45.00</td>
             </tr>
         </table>
         <p>&nbsp;</p>
@@ -103,15 +94,10 @@
         <form method="POST" id="addAdoption">
             <legend><strong>Add Adoption</strong></legend>
             <fieldset class="fields">
-                <label> first name </label> <input type="text" name="fname">
-                <label> last name </label> <input type="text" name="lname">
-                <label> Homeworld </label> <select name="homeworld">
-                    <option value="0">&nbsp;</option>
-                    <option value="1">Gemenon</option>
-                    <option value="2">Leonis</option>
-                    <option value="3">Caprica</option>
-                </select>
-                <label> age </label> <input type="text" name="age">
+                <label> Customer ID </label> <input type="text" name="customerID">
+                <label> Cat ID </label> <input type="text" name="catID">
+                <label> Adoption Date </label> <input type="text" name="adoptionDate">
+                <label> Fee </label> <input type="text" name="adoptionFee">
             </fieldset>
             <input class="btn" type="submit" id="addAdoption" value="Add Adoption">
             <input class="btn" type="button" value="Cancel" onClick="browseAdoptions()">
@@ -124,15 +110,10 @@
             <fieldset class="fields">
                 <input type="hidden" name="adoptionID" id="updateadoptionID" value="1">
                 <label> ID: </label> 1
-                <label> first name </label> <input type="text" name="fname" value="William">
-                <label> last name </label> <input type="text" name="lname" value="Adama">
-                <label> Homeworld </label> <select name="homeworld">
-                    <option value="0">&nbsp;</option>
-                    <option value="1" selected>Gemenon</option>
-                    <option value="2">Leonis</option>
-                    <option value="3">Caprica</option>
-                </select>
-                <label> age </label> <input type="text" name="age" value="61">
+                <label> Customer ID </label> <input type="text" name="customerID" value="2">
+                <label> Cat ID </label> <input type="text" name="catID" value="3">
+                <label> Adoption Date </label> <input type="text" name="adoptionDate" value="7/3/2023">
+                <label> Fee </label> <input type="text" name="adoptionFee" value="$30.00">
             </fieldset>
             <input class="btn" type="submit" id="UpdateSaveAdoption" value="Update Adoption">
             <input class="btn" type="button" value="Cancel" onClick="browseAdoptions()">
@@ -145,8 +126,8 @@
             <fieldset class="fields">
                 <p>Are you sure you wish to delete this adoption?</p>
                 <input type="hidden" name="adoptionID" id="deleteadoptionID" value="1">
-                <label><strong>ID:</strong></label> 1
-                <label> <strong>Name</strong> </label> William Adama
+                <label><strong>ID:</strong></label> 1<br>
+                <label> <strong>Date:</strong> </label> 7/3/2023
 
             </fieldset>
             <input class="btn" type="submit" id="DeleteAdoption" value="Delete Adoption">
