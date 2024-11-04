@@ -100,7 +100,7 @@
         <p>&nbsp;</p>
     </div> <!-- browse -->
     <div id="insert">
-        <form method="POST" id="addPlanet">
+        <form method="POST" id="addAdoption">
             <legend><strong>Add Adoption</strong></legend>
             <fieldset class="fields">
                 <label> first name </label> <input type="text" name="fname">
@@ -114,7 +114,7 @@
                 <label> age </label> <input type="text" name="age">
             </fieldset>
             <input class="btn" type="submit" id="addAdoption" value="Add Adoption">
-            <input class="btn" type="button" value="cancel" onClick="browseAdoptions()">
+            <input class="btn" type="button" value="Cancel" onClick="browseAdoptions()">
         </form>
     </div><!-- insert -->
     <p>&nbsp;</p>
@@ -134,8 +134,8 @@
                 </select>
                 <label> age </label> <input type="text" name="age" value="61">
             </fieldset>
-            <input class="btn" type="submit" id="UpdateSaveAdoption" value="Save Update Adoption">
-            <input class="btn" type="button" value="cancel" onClick="browseAdoptions()">
+            <input class="btn" type="submit" id="UpdateSaveAdoption" value="Update Adoption">
+            <input class="btn" type="button" value="Cancel" onClick="browseAdoptions()">
         </form>
     </div><!-- update -->
     <p>&nbsp;</p>
@@ -143,14 +143,14 @@
         <form method="POST" id="deleteAdoption">
             <legend><strong>Delete Adoption</strong></legend>
             <fieldset class="fields">
-                <p>Are you sure you wish to delete the following?</p>
+                <p>Are you sure you wish to delete this adoption?</p>
                 <input type="hidden" name="adoptionID" id="deleteadoptionID" value="1">
                 <label><strong>ID:</strong></label> 1
                 <label> <strong>Name</strong> </label> William Adama
 
             </fieldset>
             <input class="btn" type="submit" id="DeleteAdoption" value="Delete Adoption">
-            <input class="btn" type="button" value="cancel" onClick="browseAdoptions()">
+            <input class="btn" type="button" value="Cancel" onClick="browseAdoptions()">
         </form>
     </div><!-- delete -->
 

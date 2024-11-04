@@ -101,7 +101,7 @@
         <p>&nbsp;</p>
     </div> <!-- browse -->
     <div id="insert">
-        <form method="POST" id="addPlanet">
+        <form method="POST" id="addCustomer">
             <legend><strong>Add Customer</strong></legend>
             <fieldset class="fields">
                 <label> first name </label> <input type="text" name="fname">
@@ -115,7 +115,7 @@
                 <label> age </label> <input type="text" name="age">
             </fieldset>
             <input class="btn" type="submit" id="addCustomer" value="Add Customer">
-            <input class="btn" type="button" value="cancel" onClick="browseCustomers()">
+            <input class="btn" type="button" value="Cancel" onClick="browseCustomers()">
         </form>
     </div><!-- insert -->
     <p>&nbsp;</p>
@@ -135,8 +135,8 @@
                 </select>
                 <label> age </label> <input type="text" name="age" value="61">
             </fieldset>
-            <input class="btn" type="submit" id="UpdateSaveCustomer" value="Save Update Customer">
-            <input class="btn" type="button" value="cancel" onClick="browseCustomers()">
+            <input class="btn" type="submit" id="UpdateSaveCustomer" value="Update Customer">
+            <input class="btn" type="button" value="Cancel" onClick="browseCustomers()">
         </form>
     </div><!-- update -->
     <p>&nbsp;</p>
@@ -144,14 +144,14 @@
         <form method="POST" id="deleteCustomer">
             <legend><strong>Delete Customer</strong></legend>
             <fieldset class="fields">
-                <p>Are you sure you wish to delete the following?</p>
+                <p>Are you sure you wish to delete this customer?</p>
                 <input type="hidden" name="customerID" id="deletecustomerID" value="1">
                 <label><strong>ID:</strong></label> 1
                 <label> <strong>Name</strong> </label> William Adama
 
             </fieldset>
             <input class="btn" type="submit" id="DeleteCustomer" value="Delete Customer">
-            <input class="btn" type="button" value="cancel" onClick="browseCustomers()">
+            <input class="btn" type="button" value="Cancel" onClick="browseCustomers()">
         </form>
     </div><!-- delete -->
 

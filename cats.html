@@ -114,21 +114,21 @@
         <p>&nbsp;</p>
     </div> <!-- browse -->
     <div id="insert">
-        <form method="POST" id="addPlanet">
+        <form method="POST" id="addCat">
             <legend><strong>Add Cat</strong></legend>
             <fieldset class="fields">
-                <label> first name </label> <input type="text" name="fname">
-                <label> last name </label> <input type="text" name="lname">
-                <label> Homeworld </label> <select name="homeworld">
+                <label> Name </label> <input type="text" name="catName">
+                <label> Description </label> <input type="text" name="catDescription">
+                <label> Age </label> <input type="text" name="age">
+                <label> Breed </label> <input type="text" name="breed">
+                <label> Adopted </label> <select name="adopted">
                     <option value="0">&nbsp;</option>
-                    <option value="1">Gemenon</option>
-                    <option value="2">Leonis</option>
-                    <option value="3">Caprica</option>
+                    <option value="1">Yes</option>
+                    <option value="2">No</option>
                 </select>
-                <label> age </label> <input type="text" name="age">
             </fieldset>
             <input class="btn" type="submit" id="addCat" value="Add Cat">
-            <input class="btn" type="button" value="cancel" onClick="browseCats()">
+            <input class="btn" type="button" value="Cancel" onClick="browseCats()">
         </form>
     </div><!-- insert -->
     <p>&nbsp;</p>
@@ -138,18 +138,19 @@
             <fieldset class="fields">
                 <input type="hidden" name="catID" id="updatecatID" value="1">
                 <label> ID: </label> 1
-                <label> first name </label> <input type="text" name="fname" value="William">
-                <label> last name </label> <input type="text" name="lname" value="Adama">
-                <label> Homeworld </label> <select name="homeworld">
+                <label> Name </label> <input type="text" name="catName" value="Luna">
+                <label> Description </label> <input type="text" name="catDescription"
+                    value="A shy black cat who takes time to warm up but loves head scratches.">
+                <label> Age </label> <input type="text" name="age" value="2">
+                <label> Breed </label> <input type="text" name="breed" value="Domestic Shorthair">
+                <label> Adopted </label> <select name="adopted">
                     <option value="0">&nbsp;</option>
-                    <option value="1" selected>Gemenon</option>
-                    <option value="2">Leonis</option>
-                    <option value="3">Caprica</option>
+                    <option value="1">Yes</option>
+                    <option value="2" selected>No</option>
                 </select>
-                <label> age </label> <input type="text" name="age" value="61">
             </fieldset>
-            <input class="btn" type="submit" id="UpdateSaveCat" value="Save Update Cat">
-            <input class="btn" type="button" value="cancel" onClick="browseCats()">
+            <input class="btn" type="submit" id="UpdateSaveCat" value="Update Cat">
+            <input class="btn" type="button" value="Cancel" onClick="browseCats()">
         </form>
     </div><!-- update -->
     <p>&nbsp;</p>
@@ -157,14 +158,14 @@
         <form method="POST" id="deleteCat">
             <legend><strong>Delete Cat</strong></legend>
             <fieldset class="fields">
-                <p>Are you sure you wish to delete the following?</p>
+                <p>Are you sure you wish to delete this cat?</p>
                 <input type="hidden" name="catID" id="deletecatID" value="1">
-                <label><strong>ID:</strong></label> 1
-                <label> <strong>Name</strong> </label> William Adama
+                <label><strong>ID:</strong></label> 1<br>
+                <label> <strong>Name:</strong> </label> Luna
 
             </fieldset>
             <input class="btn" type="submit" id="DeleteCat" value="Delete Cat">
-            <input class="btn" type="button" value="cancel" onClick="browseCats()">
+            <input class="btn" type="button" value="Cancel" onClick="browseCats()">
         </form>
     </div><!-- delete -->
 
