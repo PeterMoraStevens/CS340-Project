@@ -1,4 +1,4 @@
--- Created by Peter & Katheryn in group 21
+-- Created by Peter & Kathryn in group 21
 
 SET FOREIGN_KEY_CHECKS=0;
 SET AUTOCOMMIT = 0;
