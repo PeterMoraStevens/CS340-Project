@@ -40,25 +40,27 @@
                 document.getElementById('delete').style.display = 'none';
             }
         }
-        function newPerson() { showform('insert'); }
-        function updatePerson(pid) { showform('update'); }
-        function deletePerson(pid) { showform('delete'); }
-        function browsePeople() { showform('browse'); }
+        function newAdoption() { showform('insert'); }
+        function updateAdoption(pid) { showform('update'); }
+        function deleteAdoption(pid) { showform('delete'); }
+        function browseAdoptions() { showform('browse'); }
         function showAll() { showform('all'); }
     </script>
 </head>
 
-<body onload="browsePeople()">
+<body onload="browseAdoptions()">
     <h1>Adoptions</h1>
 
-    [ <a href="index.html">Home</a> | <a href="customers.html">Customers</a> | <a href="adoptions.html">Adoptions</a> | <a
-        href="cats.html">Cats</a> | Etc ]
+    [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
+    | <a href="cats.html">Cats</a> | <a href="customers.html">Customers</a> | <a href="productInventory.html">Product
+        Inventory</a> | <a href="productPurchases.html">Product Purchases</a> | <a href="purchases.html">Purchases</a> |
+    Etc ]
 
     <div id="browse">
         <p><a href="#" onClick="showAll()">Display all forms</a> </p>
         <table border="1" cellpadding="5">
             <tr>
-                <th><a href="#" onClick="newPerson()">New</a></th>
+                <th><a href="#" onClick="newAdoption()">New</a></th>
                 <th></th>
                 <th>id</th>
                 <th>fname</th>
@@ -67,8 +69,8 @@
                 <th>age</th>
             </tr>
             <tr>
-                <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-                <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
+                <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
+                <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
                 <td align="right">1</td>
                 <td>William</td>
                 <td align="right">Adama</td>
@@ -76,8 +78,8 @@
                 <td>61</td>
             </tr>
             <tr>
-                <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-                <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
+                <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
+                <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
                 <td align="right">2</td>
                 <td>Lee</td>
                 <td align="right">Adama</td>
@@ -85,8 +87,8 @@
                 <td>30</td>
             </tr>
             <tr>
-                <td><a href="#" onClick="updatePerson('this.personID')">Edit</a></td>
-                <td><a href="#" onclick="deletePerson('this.personID')">Delete</a></td>
+                <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
+                <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
                 <td>3</td>
                 <td>Laura</td>
                 <td align="right">Roslin</td>
@@ -98,7 +100,7 @@
     </div> <!-- browse -->
     <div id="insert">
         <form method="POST" id="addPlanet">
-            <legend><strong>Add Person</strong></legend>
+            <legend><strong>Add Adoption</strong></legend>
             <fieldset class="fields">
                 <label> first name </label> <input type="text" name="fname">
                 <label> last name </label> <input type="text" name="lname">
@@ -110,16 +112,16 @@
                 </select>
                 <label> age </label> <input type="text" name="age">
             </fieldset>
-            <input class="btn" type="submit" id="addPerson" value="Add Person">
-            <input class="btn" type="button" value="cancel" onClick="browsePeople()">
+            <input class="btn" type="submit" id="addAdoption" value="Add Adoption">
+            <input class="btn" type="button" value="cancel" onClick="browseAdoptions()">
         </form>
     </div><!-- insert -->
     <p>&nbsp;</p>
     <div id="update">
-        <form method="POST" id="UpdatePerson">
-            <legend><strong>Update Person</strong></legend>
+        <form method="POST" id="UpdateAdoption">
+            <legend><strong>Update Adoption</strong></legend>
             <fieldset class="fields">
-                <input type="hidden" name="personID" id="updatepersonID" value="1">
+                <input type="hidden" name="adoptionID" id="updateadoptionID" value="1">
                 <label> ID: </label> 1
                 <label> first name </label> <input type="text" name="fname" value="William">
                 <label> last name </label> <input type="text" name="lname" value="Adama">
@@ -131,23 +133,23 @@
                 </select>
                 <label> age </label> <input type="text" name="age" value="61">
             </fieldset>
-            <input class="btn" type="submit" id="UpdateSavePerson" value="Save Update Person">
-            <input class="btn" type="button" value="cancel" onClick="browsePeople()">
+            <input class="btn" type="submit" id="UpdateSaveAdoption" value="Save Update Adoption">
+            <input class="btn" type="button" value="cancel" onClick="browseAdoptions()">
         </form>
     </div><!-- update -->
     <p>&nbsp;</p>
     <div id="delete" style="display: block">
-        <form method="POST" id="deletePerson">
-            <legend><strong>Delete Person</strong></legend>
+        <form method="POST" id="deleteAdoption">
+            <legend><strong>Delete Adoption</strong></legend>
             <fieldset class="fields">
                 <p>Are you sure you wish to delete the following?</p>
-                <input type="hidden" name="personID" id="deletepersonID" value="1">
+                <input type="hidden" name="adoptionID" id="deleteadoptionID" value="1">
                 <label><strong>ID:</strong></label> 1
                 <label> <strong>Name</strong> </label> William Adama
 
             </fieldset>
-            <input class="btn" type="submit" id="DeletePerson" value="Delete Person">
-            <input class="btn" type="button" value="cancel" onClick="browsePeople()">
+            <input class="btn" type="submit" id="DeleteAdoption" value="Delete Adoption">
+            <input class="btn" type="button" value="cancel" onClick="browseAdoptions()">
         </form>
     </div><!-- delete -->
 
