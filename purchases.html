@@ -1,54 +1,11 @@
 <!-- This code was adapted from the class example found at https://canvas.oregonstate.edu/courses/1976520/files/107026031?wrap=1 -->
 <!-- This page was developed by Peter and Kathryn -->
-
 <html>
 
 <head>
   <title>Purchases</title>
   <link href="style/style.css" rel="stylesheet" type="text/css" />
-  <script language="JavaScript">
-    function showform(dowhat) {
-      /*
-      * four DIVS: browse, insert, update, delete
-      * this function sets one visible the others not
-      */
-      if (dowhat == 'insert') {
-        document.getElementById('browse').style.display = 'none';
-        document.getElementById('insert').style.display = 'block';
-        document.getElementById('update').style.display = 'none';
-        document.getElementById('delete').style.display = 'none';
-      }
-      else if (dowhat == 'update') {
-        document.getElementById('browse').style.display = 'none';
-        document.getElementById('insert').style.display = 'none';
-        document.getElementById('update').style.display = 'block';
-        document.getElementById('delete').style.display = 'none';
-      }
-      else if (dowhat == 'delete') {
-        document.getElementById('browse').style.display = 'none';
-        document.getElementById('insert').style.display = 'none';
-        document.getElementById('update').style.display = 'none';
-        document.getElementById('delete').style.display = 'block';
-      }
-      else if (dowhat == 'all') {
-        document.getElementById('browse').style.display = 'block';
-        document.getElementById('insert').style.display = 'block';
-        document.getElementById('update').style.display = 'block';
-        document.getElementById('delete').style.display = 'block';
-      }
-      else { //by default display browse
-        document.getElementById('browse').style.display = 'block';
-        document.getElementById('insert').style.display = 'none';
-        document.getElementById('update').style.display = 'none';
-        document.getElementById('delete').style.display = 'none';
-      }
-    }
-    function newPurchase() { showform('insert'); }
-    function updatePurchase(pid) { showform('update'); }
-    function deletePurchase(pid) { showform('delete'); }
-    function browsePurchase() { showform('browse'); }
-    function showAll() { showform('all'); }
-  </script>
+  <script src="scripts.js"></script>
 </head>
 
 <body onload="browsePurchase()">
