@@ -8,7 +8,7 @@
     <script src="scripts.js"></script>
 </head>
 
-<body onload="browseAdoptions()">
+<body onload="browseForm()">
     <h1>Adoptions</h1>
 
     [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
@@ -19,7 +19,7 @@
         <p><a href="#" onClick="showAll()">Display all forms</a> </p>
         <table border="1" cellpadding="5">
             <tr>
-                <th><a href="#" onClick="newAdoption()">New</a></th>
+                <th><a href="#" onClick="addForm()">New</a></th>
                 <th></th>
                 <th>adoptionID</th>
                 <th>customerID</th>
@@ -28,8 +28,8 @@
                 <th>adoptionFee</th>
             </tr>
             <tr>
-                <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
-                <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
+                <td><a href="#" onClick="updateForm('this.adoptionID')">Edit</a></td>
+                <td><a href="#" onclick="deleteForm('this.adoptionID')">Delete</a></td>
                 <td>1</td>
                 <td>2</td>
                 <td>3</td>
@@ -37,8 +37,8 @@
                 <td>$30.00</td>
             </tr>
             <tr>
-                <td><a href="#" onClick="updateAdoption('this.adoptionID')">Edit</a></td>
-                <td><a href="#" onclick="deleteAdoption('this.adoptionID')">Delete</a></td>
+                <td><a href="#" onClick="updateForm('this.adoptionID')">Edit</a></td>
+                <td><a href="#" onclick="deleteForm('this.adoptionID')">Delete</a></td>
                 <td>2</td>
                 <td>4</td>
                 <td>2</td>
@@ -49,7 +49,7 @@
         <p>&nbsp;</p>
     </div> <!-- browse -->
     <div id="insert">
-        <form method="POST" id="addAdoption">
+        <form method="POST" id="addForm">
             <legend><strong>Add Adoption</strong></legend>
             <fieldset class="fields">
                 <label> Customer ID </label> <input type="text" name="customerID">
@@ -57,16 +57,16 @@
                 <label> Adoption Date </label> <input type="text" name="adoptionDate">
                 <label> Fee </label> <input type="text" name="adoptionFee">
             </fieldset>
-            <input class="btn" type="submit" id="addAdoption" value="Add Adoption">
-            <input class="btn" type="button" value="Cancel" onClick="browseAdoptions()">
+            <input class="btn" type="submit" id="addForm" value="Add Adoption">
+            <input class="btn" type="button" value="Cancel" onClick="browseForm()">
         </form>
     </div><!-- insert -->
     <p>&nbsp;</p>
     <div id="update">
-        <form method="POST" id="UpdateAdoption">
+        <form method="POST" id="updateForm">
             <legend><strong>Update Adoption</strong></legend>
             <fieldset class="fields">
-                <input type="hidden" name="adoptionID" id="updateadoptionID" value="1">
+                <input type="hidden" name="adoptionID" id="updateFormID" value="1">
                 <label> ID: </label> 1
                 <label> Customer ID </label> <input type="text" name="customerID" value="2">
                 <label> Cat ID </label> <input type="text" name="catID" value="3">
@@ -74,22 +74,22 @@
                 <label> Fee </label> <input type="text" name="adoptionFee" value="$30.00">
             </fieldset>
             <input class="btn" type="submit" id="UpdateSaveAdoption" value="Update Adoption">
-            <input class="btn" type="button" value="Cancel" onClick="browseAdoptions()">
+            <input class="btn" type="button" value="Cancel" onClick="browseForm()">
         </form>
     </div><!-- update -->
     <p>&nbsp;</p>
     <div id="delete" style="display: block">
-        <form method="POST" id="deleteAdoption">
+        <form method="POST" id="deleteForm">
             <legend><strong>Delete Adoption</strong></legend>
             <fieldset class="fields">
                 <p>Are you sure you wish to delete this adoption?</p>
-                <input type="hidden" name="adoptionID" id="deleteadoptionID" value="1">
+                <input type="hidden" name="adoptionID" id="deleteFormID" value="1">
                 <label><strong>ID:</strong></label> 1<br>
                 <label> <strong>Date:</strong> </label> 7/3/2023
 
             </fieldset>
-            <input class="btn" type="submit" id="DeleteAdoption" value="Delete Adoption">
-            <input class="btn" type="button" value="Cancel" onClick="browseAdoptions()">
+            <input class="btn" type="submit" id="deleteForm" value="Delete Adoption">
+            <input class="btn" type="button" value="Cancel" onClick="browseForm()">
         </form>
     </div><!-- delete -->
 

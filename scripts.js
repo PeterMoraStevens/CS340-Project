@@ -37,8 +37,8 @@ function showform(dowhat) {
       document.getElementById('delete').style.display = 'none';
     }
   }
-  function newAdmission() { showform('insert'); }
-  function updateAdmission(pid) { showform('update'); }
-  function deleteAdmission(pid) { showform('delete'); }
-  function browseAdmission() { showform('browse'); }
+  function addForm() { showform('insert'); }
+  function updateForm(pid) { showform('update'); }
+  function deleteForm(pid) { showform('delete'); }
+  function browseForm() { showform('browse'); }
   function showAll() { showform('all'); }

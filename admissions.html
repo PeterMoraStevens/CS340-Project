@@ -8,7 +8,7 @@
   <script src="scripts.js"></script>
 </head>
 
-<body onload="browseAdmission()">
+<body onload="browseForm()">
   <h1>Admissions</h1>
 
   [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
@@ -19,7 +19,7 @@
     <p><a href="#" onClick="showAll()">Display all forms</a> </p>
     <table border="1" cellpadding="5">
       <tr>
-        <th><a href="#" onClick="newAdmission()">New</a></th>
+        <th><a href="#" onClick="addForm()">New</a></th>
         <th></th>
         <th>admissionID</th>
         <th>customerID</th>
@@ -28,8 +28,8 @@
         <th>fee</th>
       </tr>
       <tr>
-        <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
-        <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
+        <td><a href="#" onClick="updateForm('this.admissionID')">Edit</a></td>
+        <td><a href="#" onclick="deleteForm('this.admissionID')">Delete</a></td>
         <td>1</td>
         <td>4</td>
         <td>8/7/2022</td>
@@ -37,8 +37,8 @@
         <td>$10.00</td>
       </tr>
       <tr>
-        <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
-        <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
+        <td><a href="#" onClick="updateForm('this.admissionID')">Edit</a></td>
+        <td><a href="#" onclick="deleteForm('this.admissionID')">Delete</a></td>
         <td>2</td>
         <td>3</td>
         <td>2/25/2023</td>
@@ -46,8 +46,8 @@
         <td>$5.00</td>
       </tr>
       <tr>
-        <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
-        <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
+        <td><a href="#" onClick="updateForm('this.admissionID')">Edit</a></td>
+        <td><a href="#" onclick="deleteForm('this.admissionID')">Delete</a></td>
         <td>3</td>
         <td>4</td>
         <td>3/12/2023</td>
@@ -55,8 +55,8 @@
         <td>$20.00</td>
       </tr>
       <tr>
-        <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
-        <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
+        <td><a href="#" onClick="updateForm('this.admissionID')">Edit</a></td>
+        <td><a href="#" onclick="deleteForm('this.admissionID')">Delete</a></td>
         <td>4</td>
         <td>1</td>
         <td>10/10/2024</td>
@@ -67,7 +67,7 @@
     <p>&nbsp;</p>
   </div> <!-- browse -->
   <div id="insert">
-    <form method="POST" id="addAdmission">
+    <form method="POST" id="addForm">
       <legend><strong>Add Admission</strong></legend>
       <fieldset class="fields">
         <label> Customer ID </label> <input type="text" name="customerID">
@@ -75,16 +75,16 @@
         <label> Duration </label> <input type="text" name="duration">
         <label> Admission Fee </label> <input type="text" name="fee">
       </fieldset>
-      <input class="btn" type="submit" id="addAdmission" value="Add Admission">
-      <input class="btn" type="button" value="Cancel" onClick="browseAdmission()">
+      <input class="btn" type="submit" id="addForm" value="Add Admission">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- insert -->
   <p>&nbsp;</p>
   <div id="update">
-    <form method="POST" id="updateAdmission">
+    <form method="POST" id="updateForm">
       <legend><strong>Update Admission</strong></legend>
       <fieldset class="fields">
-        <input type="hidden" name="admissionID" id="updateAdmissionID" value="1">
+        <input type="hidden" name="admissionID" id="updateFormID" value="1">
         <label> ID: </label> 1
         <label> Customer ID </label> <input type="text" name="customerID" value="4">
         <label> Admission Date </label> <input type="text" name="admissionDate" value="8/7/2022">
@@ -92,23 +92,23 @@
         <label> Admission Fee </label> <input type="text" name="fee" value="$10.00">
       </fieldset>
       <input class="btn" type="submit" id="UpdateSaveAdmission" value="Save Update Admission">
-      <input class="btn" type="button" value="Cancel" onClick="browseAdmission()">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- update -->
   <p>&nbsp;</p>
   <div id="delete" style="display: block">
-    <form method="POST" id="deleteAdmission">
+    <form method="POST" id="deleteForm">
       <legend><strong>Delete Admission</strong></legend>
       <fieldset class="fields">
         <p>Are you sure you wish to delete this admission?</p>
-        <input type="hidden" name="admissionID" id="deleteadmissionID" value="1">
+        <input type="hidden" name="admissionID" id="deleteFormID" value="1">
         <label><strong>ID:</strong></label> 1 <br>
         <label> <strong>Customer ID:</strong> </label> 4<br>
         <label> <strong>Date:</strong> </label> 8/7/2022
 
       </fieldset>
-      <input class="btn" type="submit" id="DeleteAdmission" value="Delete Admission">
-      <input class="btn" type="button" value="Cancel" onClick="browseAdmission()">
+      <input class="btn" type="submit" id="deleteForm" value="Delete Admission">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- delete -->
 

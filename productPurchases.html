@@ -8,7 +8,7 @@
   <script src="scripts.js"></script>
 </head>
 
-<body onload="browsePurchase()">
+<body onload="browseForm()">
   <h1>ProductPurchases</h1>
 
   [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
@@ -19,43 +19,43 @@
     <p><a href="#" onClick="showAll()">Display all forms</a> </p>
     <table border="1" cellpadding="5">
       <tr>
-        <th><a href="#" onClick="newPurchase()">New</a></th>
+        <th><a href="#" onClick="addForm()">New</a></th>
         <th></th>
         <th>productPurchaseID</th>
         <th>purchaseID</th>
         <th>productID</th>
       </tr>
       <tr>
-        <td><a href="#" onClick="updatePurchase(1)">Edit</a></td>
-        <td><a href="#" onClick="deletePurchase(1)">Delete</a></td>
+        <td><a href="#" onClick="updateForm(1)">Edit</a></td>
+        <td><a href="#" onClick="deleteForm(1)">Delete</a></td>
         <td>1</td>
         <td>1</td>
         <td>2</td>
     </tr>
     <tr>
-        <td><a href="#" onClick="updatePurchase(2)">Edit</a></td>
-        <td><a href="#" onClick="deletePurchase(2)">Delete</a></td>
+        <td><a href="#" onClick="updateForm(2)">Edit</a></td>
+        <td><a href="#" onClick="deleteForm(2)">Delete</a></td>
         <td>2</td>
         <td>2</td>
         <td>8</td>
     </tr>
     <tr>
-        <td><a href="#" onClick="updatePurchase(3)">Edit</a></td>
-        <td><a href="#" onClick="deletePurchase(3)">Delete</a></td>
+        <td><a href="#" onClick="updateForm(3)">Edit</a></td>
+        <td><a href="#" onClick="deleteForm(3)">Delete</a></td>
         <td>3</td>
         <td>3</td>
         <td>6</td>
     </tr>
     <tr>
-        <td><a href="#" onClick="updatePurchase(4)">Edit</a></td>
-        <td><a href="#" onClick="deletePurchase(4)">Delete</a></td>
+        <td><a href="#" onClick="updateForm(4)">Edit</a></td>
+        <td><a href="#" onClick="deleteForm(4)">Delete</a></td>
         <td>4</td>
         <td>4</td>
         <td>3</td>
     </tr>
     <tr>
-        <td><a href="#" onClick="updatePurchase(5)">Edit</a></td>
-        <td><a href="#" onClick="deletePurchase(5)">Delete</a></td>
+        <td><a href="#" onClick="updateForm(5)">Edit</a></td>
+        <td><a href="#" onClick="deleteForm(5)">Delete</a></td>
         <td>5</td>
         <td>3</td>
         <td>6</td>
@@ -64,19 +64,19 @@
     <p>&nbsp;</p>
   </div> <!-- browse -->
   <div id="insert">
-    <form method="POST" id="addPurchase">
+    <form method="POST" id="addForm">
       <legend><strong>Add Product Purchase</strong></legend>
       <fieldset class="fields">
         <label> Purchase ID </label> <input type="text" name="purchaseID">
         <label> Product ID </label> <input type="text" name="productID">
       </fieldset>
-      <input class="btn" type="submit" id="addPurchase" value="Add Purchase">
-      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+      <input class="btn" type="submit" id="addForm" value="Add Purchase">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- insert -->
   <p>&nbsp;</p>
   <div id="update">
-    <form method="POST" id="UpdatePurchase">
+    <form method="POST" id="updateForm">
       <legend><strong>Update Product Purchase</strong></legend>
       <fieldset class="fields">
         <input type="hidden" name="productPurchaseID" id="updateproductpurchaseID" value="1">
@@ -85,7 +85,7 @@
         <label> Product ID </label> <input type="text" name="productID" value="2">
       </fieldset>
       <input class="btn" type="submit" id="UpdateSaveProductPurchaseID" value="Update productpurchaseID">
-      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- update -->
   <p>&nbsp;</p>
@@ -100,8 +100,8 @@
         <label> <strong>Product ID:</strong> </label> 2
 
       </fieldset>
-      <input class="btn" type="submit" id="DeletePurchase" value="DeletePurchase">
-      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+      <input class="btn" type="submit" id="deleteForm" value="deleteForm">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- delete -->
 

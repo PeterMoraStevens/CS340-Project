@@ -8,7 +8,7 @@
   <script src="scripts.js"></script>
 </head>
 
-<body onload="browsePurchase()">
+<body onload="browseForm()">
   <h1>Admission</h1>
 
   [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
@@ -19,7 +19,7 @@
     <p><a href="#" onClick="showAll()">Display all forms</a> </p>
     <table border="1" cellpadding="5">
       <tr>
-        <th><a href="#" onClick="newPurchase()">New</a></th>
+        <th><a href="#" onClick="addForm()">New</a></th>
         <th></th>
         <th>purchaseID</th>
         <th>customerID</th>
@@ -27,32 +27,32 @@
         <th>purchaseCost</th>
       </tr>
       <tr>
-        <td><a href="#" onClick="updatePurchase('this.purchaseID')">Edit</a></td>
-        <td><a href="#" onclick="deletePurchase('this.purchaseID')">Delete</a></td>
+        <td><a href="#" onClick="updateForm('this.purchaseID')">Edit</a></td>
+        <td><a href="#" onclick="deleteForm('this.purchaseID')">Delete</a></td>
         <td>1</td>
         <td>4</td>
         <td>10/31/2023</td>
         <td>$5.00</td>
     </tr>
     <tr>
-        <td><a href="#" onClick="updatePurchase('this.purchaseID')">Edit</a></td>
-        <td><a href="#" onclick="deletePurchase('this.purchaseID')">Delete</a></td>
+        <td><a href="#" onClick="updateForm('this.purchaseID')">Edit</a></td>
+        <td><a href="#" onclick="deleteForm('this.purchaseID')">Delete</a></td>
         <td>2</td>
         <td>4</td>
         <td>8/21/2024</td>
         <td>$12.00</td>
     </tr>
     <tr>
-        <td><a href="#" onClick="updatePurchase('this.purchaseID')">Edit</a></td>
-        <td><a href="#" onclick="deletePurchase('this.purchaseID')">Delete</a></td>
+        <td><a href="#" onClick="updateForm('this.purchaseID')">Edit</a></td>
+        <td><a href="#" onclick="deleteForm('this.purchaseID')">Delete</a></td>
         <td>3</td>
         <td>1</td>
         <td>09/04/2024</td>
         <td>$3.00</td>
     </tr>
     <tr>
-        <td><a href="#" onClick="updatePurchase('this.purchaseID')">Edit</a></td>
-        <td><a href="#" onclick="deletePurchase('this.purchaseID')">Delete</a></td>
+        <td><a href="#" onClick="updateForm('this.purchaseID')">Edit</a></td>
+        <td><a href="#" onclick="deleteForm('this.purchaseID')">Delete</a></td>
         <td>4</td>
         <td>2</td>
         <td>10/04/2002</td>
@@ -70,38 +70,38 @@
         <label> Purchase Cost </label> <input type="text" name="purchaseCost">
       </fieldset>
       <input class="btn" type="submit" id="addPurchase" value="Add Purchase">
-      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- insert -->
   <p>&nbsp;</p>
   <div id="update">
-    <form method="POST" id="updatePurchase">
+    <form method="POST" id="updateForm">
       <legend><strong>Update Purchase</strong></legend>
       <fieldset class="fields">
-        <input type="hidden" name="purchaseID" id="updatePurchaseID" value="1">
+        <input type="hidden" name="purchaseID" id="updateFormID" value="1">
         <label> ID: </label> 1
         <label> Customer ID </label> <input type="text" name="customerID" value="4">
         <label> Purchase Date </label> <input type="text" name="purchaseDate" value="10/31/2023">
         <label> Purchase Cost </label> <input type="text" name="purchaseCost" value="$5.00">
       </fieldset>
       <input class="btn" type="submit" id="UpdateSavePurchase" value="Update Purchase">
-      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- update -->
   <p>&nbsp;</p>
   <div id="delete" style="display: block">
-    <form method="POST" id="deletePurchase">
+    <form method="POST" id="deleteForm">
       <legend><strong>Delete Purchase</strong></legend>
       <fieldset class="fields">
         <p>Are you sure you wish to delete this purchase?</p>
-        <input type="hidden" name="purchaseID" id="deletePurchaseID" value="1">
+        <input type="hidden" name="purchaseID" id="deleteFormID" value="1">
         <label><strong>ID:</strong></label> 1<br>
         <label> <strong>Customer ID:</strong> </label> 4<br>
         <label> <strong>Purchase Date:</strong> </label> 4
 
       </fieldset>
-      <input class="btn" type="submit" id="deletePurchase" value="Delete Purchase">
-      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+      <input class="btn" type="submit" id="deleteForm" value="Delete Purchase">
+      <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- delete -->
 

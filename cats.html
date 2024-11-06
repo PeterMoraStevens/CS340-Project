@@ -8,7 +8,7 @@
     <script src="scripts.js"></script>
 </head>
 
-<body onload="browseCats()">
+<body onload="browseForm()">
     <h1>Cats</h1>
 
     [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
@@ -19,7 +19,7 @@
         <p><a href="#" onClick="showAll()">Display all forms</a> </p>
         <table border="1" cellpadding="5">
             <tr>
-                <th><a href="#" onClick="newCat()">New</a></th>
+                <th><a href="#" onClick="addForm()">New</a></th>
                 <th></th>
                 <th>catID</th>
                 <th>catName</th>
@@ -29,8 +29,8 @@
                 <th>adopted</th>
             </tr>
             <tr>
-                <td><a href="#" onClick="updateCat('this.catID')">Edit</a></td>
-                <td><a href="#" onclick="deleteCat('this.catID')">Delete</a></td>
+                <td><a href="#" onClick="updateForm('this.catID')">Edit</a></td>
+                <td><a href="#" onclick="deleteForm('this.catID')">Delete</a></td>
                 <td>1</td>
                 <td>Luna</td>
                 <td>A shy black cat who takes time to warm up but loves head scratches.</td>
@@ -39,8 +39,8 @@
                 <td>No</td>
             </tr>
             <tr>
-                <td><a href="#" onClick="updateCat('this.catID')">Edit</a></td>
-                <td><a href="#" onclick="deleteCat('this.catID')">Delete</a></td>
+                <td><a href="#" onClick="updateForm('this.catID')">Edit</a></td>
+                <td><a href="#" onclick="deleteForm('this.catID')">Delete</a></td>
                 <td>2</td>
                 <td>Peanut</td>
                 <td>A playful Siamese who loves to chase feather toys.</td>
@@ -49,8 +49,8 @@
                 <td>Yes</td>
             </tr>
             <tr>
-                <td><a href="#" onClick="updateCat('this.catID')">Edit</a></td>
-                <td><a href="#" onclick="deleteCat('this.catID')">Delete</a></td>
+                <td><a href="#" onClick="updateForm('this.catID')">Edit</a></td>
+                <td><a href="#" onclick="deleteForm('this.catID')">Delete</a></td>
                 <td>3</td>
                 <td>Bella</td>
                 <td>A calm and affectionate Maine Coon who enjoys lounging in sunny spots.</td>
@@ -59,8 +59,8 @@
                 <td>Yes</td>
             </tr>
             <tr>
-                <td><a href="#" onClick="updateCat('this.catID')">Edit</a></td>
-                <td><a href="#" onclick="deleteCat('this.catID')">Delete</a></td>
+                <td><a href="#" onClick="updateForm('this.catID')">Edit</a></td>
+                <td><a href="#" onclick="deleteForm('this.catID')">Delete</a></td>
                 <td>4</td>
                 <td>Max</td>
                 <td>A sweet calico who loves snuggling on laps.</td>
@@ -72,7 +72,7 @@
         <p>&nbsp;</p>
     </div> <!-- browse -->
     <div id="insert">
-        <form method="POST" id="addCat">
+        <form method="POST" id="addForm">
             <legend><strong>Add Cat</strong></legend>
             <fieldset class="fields">
                 <label> Name </label> <input type="text" name="catName">
@@ -85,16 +85,16 @@
                     <option value="2">No</option>
                 </select>
             </fieldset>
-            <input class="btn" type="submit" id="addCat" value="Add Cat">
-            <input class="btn" type="button" value="Cancel" onClick="browseCats()">
+            <input class="btn" type="submit" id="addForm" value="Add Cat">
+            <input class="btn" type="button" value="Cancel" onClick="browseForm()">
         </form>
     </div><!-- insert -->
     <p>&nbsp;</p>
     <div id="update">
-        <form method="POST" id="UpdateCat">
+        <form method="POST" id="updateForm">
             <legend><strong>Update Cat</strong></legend>
             <fieldset class="fields">
-                <input type="hidden" name="catID" id="updatecatID" value="1">
+                <input type="hidden" name="catID" id="updateFormID" value="1">
                 <label> ID: </label> 1
                 <label> Name </label> <input type="text" name="catName" value="Luna">
                 <label> Description </label> <input type="text" name="catDescription"
@@ -108,22 +108,22 @@
                 </select>
             </fieldset>
             <input class="btn" type="submit" id="UpdateSaveCat" value="Update Cat">
-            <input class="btn" type="button" value="Cancel" onClick="browseCats()">
+            <input class="btn" type="button" value="Cancel" onClick="browseForm()">
         </form>
     </div><!-- update -->
     <p>&nbsp;</p>
     <div id="delete" style="display: block">
-        <form method="POST" id="deleteCat">
+        <form method="POST" id="deleteForm">
             <legend><strong>Delete Cat</strong></legend>
             <fieldset class="fields">
                 <p>Are you sure you wish to delete this cat?</p>
-                <input type="hidden" name="catID" id="deletecatID" value="1">
+                <input type="hidden" name="catID" id="deleteFormID" value="1">
                 <label><strong>ID:</strong></label> 1<br>
                 <label> <strong>Name:</strong> </label> Luna
 
             </fieldset>
-            <input class="btn" type="submit" id="DeleteCat" value="Delete Cat">
-            <input class="btn" type="button" value="Cancel" onClick="browseCats()">
+            <input class="btn" type="submit" id="deleteForm" value="Delete Cat">
+            <input class="btn" type="button" value="Cancel" onClick="browseForm()">
         </form>
     </div><!-- delete -->
 
