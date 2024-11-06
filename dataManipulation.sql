@@ -167,7 +167,7 @@
     -- Recieve all product records for the ProductInventory page
     SELECT * FROM ProductInventory;
 
-    -- Recieve a single customer record based on customerID from the form
+    -- Recieve a single product record based on productID from the form
     SELECT productID, productName, price, productCategory
     FROM ProductInventory 
     WHERE productID = :productID_in_form
@@ -204,7 +204,7 @@
     -- Recieve all purchase records for the Purchases page
     SELECT * FROM Purchases;
 
-    -- Recieve a single customer record based on customerID from the form
+    -- Recieve a single purchase record based on purchaseID from the form
     SELECT purchaseID, custmerID, purchaseDate, purchaseCost
     FROM Purchases 
     WHERE purchaseID = :purchaseID_in_form
