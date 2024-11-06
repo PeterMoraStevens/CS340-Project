@@ -1,157 +1,153 @@
-<!-- Code used from the example and updated to fill our groups needs -->
+<!-- This code was adapted from the class example found at https://canvas.oregonstate.edu/courses/1976520/files/107026031?wrap=1 -->
+<!-- This page was developed by Peter and Kathryn -->
 
 <html>
+
 <head>
-<title>ProductPurchases</title>
-<link href="style/style.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript">
-		function showform(dowhat) {
-			/*
-			* four DIVS: browse, insert, update, delete
-			* this function sets one visible the others not
-			*/
-			if (dowhat == 'insert'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'block';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'none';
-			}
-			else if (dowhat == 'update'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'block';
-				document.getElementById('delete').style.display = 'none';
-			}
-			else if (dowhat == 'delete'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'block';
-			}
-      else if (dowhat == 'all'){
-				document.getElementById('browse').style.display = 'block';
-				document.getElementById('insert').style.display = 'block';
-				document.getElementById('update').style.display = 'block';
-				document.getElementById('delete').style.display = 'block';
-			}
-			else { //by default display browse
-				document.getElementById('browse').style.display = 'block';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'none';
-			}
-		}
+  <title>ProductPurchases</title>
+  <link href="style/style.css" rel="stylesheet" type="text/css" />
+  <script language="JavaScript">
+    function showform(dowhat) {
+      /*
+      * four DIVS: browse, insert, update, delete
+      * this function sets one visible the others not
+      */
+      if (dowhat == 'insert') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'update') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'delete') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else if (dowhat == 'all') {
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else { //by default display browse
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+    }
     function newPurchase() { showform('insert'); }
     function updatePurchase(pid) { showform('update'); }
-    function deletePurchase(pid) { showform ('delete'); }
-    function browsePurchase() { showform ('browse'); }
-    function showAll() { showform ('all'); }
-</script>
+    function deletePurchase(pid) { showform('delete'); }
+    function browsePurchase() { showform('browse'); }
+    function showAll() { showform('all'); }
+  </script>
 </head>
 
 <body onload="browsePurchase()">
-<h1>ProductPurchases</h1>
+  <h1>ProductPurchases</h1>
 
-[ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
-    | <a href="cats.html">Cats</a> | <a href="customers.html">Customers</a> | <a href="productInventory.html">Product
-        Inventory</a> | <a href="productPurchases.html">Product Purchases</a> | <a href="purchases.html">Purchases</a> ]
+  [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
+  | <a href="cats.html">Cats</a> | <a href="customers.html">Customers</a> | <a href="productInventory.html">Product
+    Inventory</a> | <a href="productPurchases.html">Product Purchases</a> | <a href="purchases.html">Purchases</a> ]
 
-<div id="browse">
-<p><a href="#" onClick="showAll()">Display all forms</a> </p>
-<table border="1" cellpadding="5">
-  <tr>
-    <th><a href="#" onClick="newPurchase()">New</a></th>
-    <th></th>
-    <th>id</th>
-    <th>fname</th>
-    <th>lname</th>
-    <th>homeworld</th>
-    <th>age</th>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updatePurchase('this.productPurchaseID')">Edit</a></td>
-    <td><a href="#" onclick="deletePurchase('this.productPurchaseID')">Delete</a></td>
-    <td align="right" >1</td>
-    <td >William</td>
-    <td align="right" >Adama</td>
-    <td>Caprica</td>
-    <td>61</td>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updatePerson('this.productPurchaseID')">Edit</a></td>
-    <td><a href="#" onclick="deletePerson('this.productPurchaseID')">Delete</a></td>
-    <td align="right" >2</td>
-    <td>Lee</td>
-    <td align="right" >Adama</td>
-    <td >Caprica</td>
-    <td>30</td>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updatePerson('this.productPurchaseID')">Edit</a></td>
-    <td><a href="#" onclick="deletePerson('this.productPurchaseID')">Delete</a></td>
-    <td>3</td>
-    <td>Laura</td>
-    <td align="right" >Roslin</td>
-    <td>Caprica</td>
-    <td><em>NULL</em></td>
-  </tr>
-</table>
-<p>&nbsp;</p>
-</div> <!-- browse -->
-<div id="insert">
+  <div id="browse">
+    <p><a href="#" onClick="showAll()">Display all forms</a> </p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#" onClick="newPurchase()">New</a></th>
+        <th></th>
+        <th>productPurchaseID</th>
+        <th>purchaseID</th>
+        <th>productID</th>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updatePurchase(1)">Edit</a></td>
+        <td><a href="#" onClick="deletePurchase(1)">Delete</a></td>
+        <td>1</td>
+        <td>1</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td><a href="#" onClick="updatePurchase(2)">Edit</a></td>
+        <td><a href="#" onClick="deletePurchase(2)">Delete</a></td>
+        <td>2</td>
+        <td>2</td>
+        <td>8</td>
+    </tr>
+    <tr>
+        <td><a href="#" onClick="updatePurchase(3)">Edit</a></td>
+        <td><a href="#" onClick="deletePurchase(3)">Delete</a></td>
+        <td>3</td>
+        <td>3</td>
+        <td>6</td>
+    </tr>
+    <tr>
+        <td><a href="#" onClick="updatePurchase(4)">Edit</a></td>
+        <td><a href="#" onClick="deletePurchase(4)">Delete</a></td>
+        <td>4</td>
+        <td>4</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td><a href="#" onClick="updatePurchase(5)">Edit</a></td>
+        <td><a href="#" onClick="deletePurchase(5)">Delete</a></td>
+        <td>5</td>
+        <td>3</td>
+        <td>6</td>
+    </tr>    
+    </table>
+    <p>&nbsp;</p>
+  </div> <!-- browse -->
+  <div id="insert">
     <form method="POST" id="addPurchase">
-        <legend><strong>Add Product Purchase</strong></legend>
-          <fieldset class="fields">
-            <label> first name </label> <input type="text" name="fname">
-            <label> last name </label> <input type="text" name="lname">
-            <label> Homeworld </label> <select name="homeworld">
-            	<option value="0">&nbsp;</option>
-                <option value="1">Gemenon</option>
-                <option value="2">Leonis</option>
-                <option value="3">Caprica</option>
-                </select>
-            <label> age </label> <input type="text" name="age">
+      <legend><strong>Add Product Purchase</strong></legend>
+      <fieldset class="fields">
+        <label> Purchase ID </label> <input type="text" name="purchaseID">
+        <label> Product ID </label> <input type="text" name="productID">
       </fieldset>
-          <input class="btn" type="submit" id="addPurchase" value="Add Purchase">
-          <input class="btn" type="button" value="cancel" onClick="browsePurchase()">
-	</form> 
-</div><!-- insert -->
-<p>&nbsp;</p>
-<div id="update">
+      <input class="btn" type="submit" id="addPurchase" value="Add Purchase">
+      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+    </form>
+  </div><!-- insert -->
+  <p>&nbsp;</p>
+  <div id="update">
     <form method="POST" id="UpdatePurchase">
-        <legend><strong>Update Product Purchase</strong></legend>
-          <fieldset class="fields">
-          <input type="hidden" name="productPurchaseID" id="updateproductpurchaseID" value="1">
-          <label> ID: </label> 1
-            <label> first name </label> <input type="text" name="fname" value="William">
-            <label> last name </label> <input type="text" name="lname" value="Adama">
-            <label> Homeworld </label> <select name="homeworld">
-            	<option value="0">&nbsp;</option>
-                <option value="1" selected>Gemenon</option>
-                <option value="2">Leonis</option>
-                <option value="3">Caprica</option>
-                </select>
-            <label> age </label> <input type="text" name="age" value="61">
+      <legend><strong>Update Product Purchase</strong></legend>
+      <fieldset class="fields">
+        <input type="hidden" name="productPurchaseID" id="updateproductpurchaseID" value="1">
+        <label> ID: </label> 1
+        <label> Purchase ID </label> <input type="text" name="purchaseID" value="1">
+        <label> Product ID </label> <input type="text" name="productID" value="2">
       </fieldset>
-          <input class="btn" type="submit" id="UpdateSaveProductPurchaseID" value="Save Update productpurchaseID">
-          <input class="btn" type="button" value="cancel" onClick="browsePurchase()">
-	</form> 
-</div><!-- update -->
-<p>&nbsp;</p>
-<div id="delete" style="display: block">
-  <form method="POST" id="deleteProduct">
+      <input class="btn" type="submit" id="UpdateSaveProductPurchaseID" value="Update productpurchaseID">
+      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+    </form>
+  </div><!-- update -->
+  <p>&nbsp;</p>
+  <div id="delete" style="display: block">
+    <form method="POST" id="deleteProduct">
       <legend><strong>Delete Product Purchase</strong></legend>
-          <fieldset class="fields">
-          <p>Are you sure you wish to delete the following?</p>
-          <input type="hidden" name="personID" id="deleteproductpurchaseID" value="1">
-          <label><strong>ID:</strong></label> 1
-            <label> <strong>Name</strong> </label> William Adama
-            
-    </fieldset>
-    <input class="btn" type="submit" id="DeletePurchase" value="DeletePurchase">
-          <input class="btn" type="button" value="cancel" onClick="browsePurchase()">
-  </form> 
-</div><!-- delete -->
+      <fieldset class="fields">
+        <p>Are you sure you wish to delete this product purchase?</p>
+        <input type="hidden" name="personID" id="deleteproductpurchaseID" value="1">
+        <label><strong>ID:</strong></label> 1<br>
+        <label><strong>Purchase ID:</strong></label> 1<br>
+        <label> <strong>Product ID:</strong> </label> 2
+
+      </fieldset>
+      <input class="btn" type="submit" id="DeletePurchase" value="DeletePurchase">
+      <input class="btn" type="button" value="Cancel" onClick="browsePurchase()">
+    </form>
+  </div><!-- delete -->
 
 </body>
+
 </html>
