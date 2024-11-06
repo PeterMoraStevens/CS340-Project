@@ -1,157 +1,160 @@
-<!-- Code used from the example and updated to fill our groups needs -->
+<!-- This code was adapted from the class example found at https://canvas.oregonstate.edu/courses/1976520/files/107026031?wrap=1 -->
+<!-- This page was developed by Peter and Kathryn -->
 
 <html>
+
 <head>
-<title>Admissions</title>
-<link href="style/style.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript">
-		function showform(dowhat) {
-			/*
-			* four DIVS: browse, insert, update, delete
-			* this function sets one visible the others not
-			*/
-			if (dowhat == 'insert'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'block';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'none';
-			}
-			else if (dowhat == 'update'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'block';
-				document.getElementById('delete').style.display = 'none';
-			}
-			else if (dowhat == 'delete'){
-				document.getElementById('browse').style.display = 'none';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'block';
-			}
-      else if (dowhat == 'all'){
-				document.getElementById('browse').style.display = 'block';
-				document.getElementById('insert').style.display = 'block';
-				document.getElementById('update').style.display = 'block';
-				document.getElementById('delete').style.display = 'block';
-			}
-			else { //by default display browse
-				document.getElementById('browse').style.display = 'block';
-				document.getElementById('insert').style.display = 'none';
-				document.getElementById('update').style.display = 'none';
-				document.getElementById('delete').style.display = 'none';
-			}
-		}
+  <title>Admissions</title>
+  <link href="style/style.css" rel="stylesheet" type="text/css" />
+  <script language="JavaScript">
+    function showform(dowhat) {
+      /*
+      * four DIVS: browse, insert, update, delete
+      * this function sets one visible the others not
+      */
+      if (dowhat == 'insert') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'update') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'none';
+      }
+      else if (dowhat == 'delete') {
+        document.getElementById('browse').style.display = 'none';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else if (dowhat == 'all') {
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'block';
+        document.getElementById('update').style.display = 'block';
+        document.getElementById('delete').style.display = 'block';
+      }
+      else { //by default display browse
+        document.getElementById('browse').style.display = 'block';
+        document.getElementById('insert').style.display = 'none';
+        document.getElementById('update').style.display = 'none';
+        document.getElementById('delete').style.display = 'none';
+      }
+    }
     function newAdmission() { showform('insert'); }
     function updateAdmission(pid) { showform('update'); }
-    function deleteAdmission(pid) { showform ('delete'); }
-    function browseAdmission() { showform ('browse'); }
-    function showAll() { showform ('all'); }
-</script>
+    function deleteAdmission(pid) { showform('delete'); }
+    function browseAdmission() { showform('browse'); }
+    function showAll() { showform('all'); }
+  </script>
 </head>
 
 <body onload="browseAdmission()">
-<h1>Admission</h1>
+  <h1>Admissions</h1>
 
-[ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
-    | <a href="cats.html">Cats</a> | <a href="customers.html">Customers</a> | <a href="productInventory.html">Product
-        Inventory</a> | <a href="productPurchases.html">Product Purchases</a> | <a href="purchases.html">Purchases</a> ]
+  [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
+  | <a href="cats.html">Cats</a> | <a href="customers.html">Customers</a> | <a href="productInventory.html">Product
+    Inventory</a> | <a href="productPurchases.html">Product Purchases</a> | <a href="purchases.html">Purchases</a> ]
 
-<div id="browse">
-<p><a href="#" onClick="showAll()">Display all forms</a> </p>
-<table border="1" cellpadding="5">
-  <tr>
-    <th><a href="#" onClick="newAdmission()">New</a></th>
-    <th></th>
-    <th>id</th>
-    <th>fname</th>
-    <th>lname</th>
-    <th>homeworld</th>
-    <th>age</th>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
-    <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
-    <td align="right" >1</td>
-    <td >William</td>
-    <td align="right" >Adama</td>
-    <td>Caprica</td>
-    <td>61</td>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
-    <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
-    <td align="right" >2</td>
-    <td>Lee</td>
-    <td align="right" >Adama</td>
-    <td >Caprica</td>
-    <td>30</td>
-  </tr>
-  <tr>
-    <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
-    <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
-    <td>3</td>
-    <td>Laura</td>
-    <td align="right" >Roslin</td>
-    <td>Caprica</td>
-    <td><em>NULL</em></td>
-  </tr>
-</table>
-<p>&nbsp;</p>
-</div> <!-- browse -->
-<div id="insert">
+  <div id="browse">
+    <p><a href="#" onClick="showAll()">Display all forms</a> </p>
+    <table border="1" cellpadding="5">
+      <tr>
+        <th><a href="#" onClick="newAdmission()">New</a></th>
+        <th></th>
+        <th>admissionID</th>
+        <th>customerID</th>
+        <th>admissionDate</th>
+        <th>duration</th>
+        <th>fee</th>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
+        <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
+        <td>1</td>
+        <td>4</td>
+        <td>8/7/2022</td>
+        <td>0:30:00</td>
+        <td>$10.00</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
+        <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
+        <td>2</td>
+        <td>3</td>
+        <td>2/25/2023</td>
+        <td>0:15:00</td>
+        <td>$5.00</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
+        <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
+        <td>3</td>
+        <td>4</td>
+        <td>3/12/2023</td>
+        <td>1:00:00</td>
+        <td>$20.00</td>
+      </tr>
+      <tr>
+        <td><a href="#" onClick="updateAdmission('this.admissionID')">Edit</a></td>
+        <td><a href="#" onclick="deleteAdmission('this.admissionID')">Delete</a></td>
+        <td>4</td>
+        <td>1</td>
+        <td>10/10/2024</td>
+        <td>0:30:00</td>
+        <td>$10.00</td>
+      </tr>
+    </table>
+    <p>&nbsp;</p>
+  </div> <!-- browse -->
+  <div id="insert">
     <form method="POST" id="addAdmission">
-        <legend><strong>Add Admission</strong></legend>
-          <fieldset class="fields">
-            <label> first name </label> <input type="text" name="fname">
-            <label> last name </label> <input type="text" name="lname">
-            <label> Homeworld </label> <select name="homeworld">
-            	<option value="0">&nbsp;</option>
-                <option value="1">Gemenon</option>
-                <option value="2">Leonis</option>
-                <option value="3">Caprica</option>
-                </select>
-            <label> age </label> <input type="text" name="age">
+      <legend><strong>Add Admission</strong></legend>
+      <fieldset class="fields">
+        <label> Customer ID </label> <input type="text" name="customerID">
+        <label> Admission Date </label> <input type="text" name="admissionDate">
+        <label> Duration </label> <input type="text" name="duration">
+        <label> Admission Fee </label> <input type="text" name="fee">
       </fieldset>
-          <input class="btn" type="submit" id="addAdmission" value="Add Admission">
-          <input class="btn" type="button" value="cancel" onClick="browseAdmission()">
-	</form> 
-</div><!-- insert -->
-<p>&nbsp;</p>
-<div id="update">
+      <input class="btn" type="submit" id="addAdmission" value="Add Admission">
+      <input class="btn" type="button" value="cancel" onClick="browseAdmission()">
+    </form>
+  </div><!-- insert -->
+  <p>&nbsp;</p>
+  <div id="update">
     <form method="POST" id="updateAdmission">
-        <legend><strong>Update Admission</strong></legend>
-          <fieldset class="fields">
-          <input type="hidden" name="admissionID" id="updateAdmissionID" value="1">
-          <label> ID: </label> 1
-            <label> first name </label> <input type="text" name="fname" value="William">
-            <label> last name </label> <input type="text" name="lname" value="Adama">
-            <label> Homeworld </label> <select name="homeworld">
-            	<option value="0">&nbsp;</option>
-                <option value="1" selected>Gemenon</option>
-                <option value="2">Leonis</option>
-                <option value="3">Caprica</option>
-                </select>
-            <label> age </label> <input type="text" name="age" value="61">
+      <legend><strong>Update Admission</strong></legend>
+      <fieldset class="fields">
+        <input type="hidden" name="admissionID" id="updateAdmissionID" value="1">
+        <label> ID: </label> 1
+        <label> Customer ID </label> <input type="text" name="customerID" value="4">
+        <label> Admission Date </label> <input type="text" name="admissionDate" value="8/7/2022">
+        <label> Duration </label> <input type="text" name="duration" value="0:30:00">
+        <label> Admission Fee </label> <input type="text" name="fee" value="$10.00">
       </fieldset>
-          <input class="btn" type="submit" id="UpdateSaveAdmission" value="Save Update Admission">
-          <input class="btn" type="button" value="cancel" onClick="browseAdmission()">
-	</form> 
-</div><!-- update -->
-<p>&nbsp;</p>
-<div id="delete" style="display: block">
-  <form method="POST" id="deleteAdmission">
+      <input class="btn" type="submit" id="UpdateSaveAdmission" value="Save Update Admission">
+      <input class="btn" type="button" value="cancel" onClick="browseAdmission()">
+    </form>
+  </div><!-- update -->
+  <p>&nbsp;</p>
+  <div id="delete" style="display: block">
+    <form method="POST" id="deleteAdmission">
       <legend><strong>Delete Admission</strong></legend>
-          <fieldset class="fields">
-          <p>Are you sure you wish to delete the following?</p>
-          <input type="hidden" name="admissionID" id="deleteadmissionID" value="1">
-          <label><strong>ID:</strong></label> 1
-            <label> <strong>Name</strong> </label> William Adama
-            
-    </fieldset>
-    <input class="btn" type="submit" id="DeleteAdmission" value="Delete Admission">
-          <input class="btn" type="button" value="cancel" onClick="browseAdmission()">
-  </form> 
-</div><!-- delete -->
+      <fieldset class="fields">
+        <p>Are you sure you wish to delete the following?</p>
+        <input type="hidden" name="admissionID" id="deleteadmissionID" value="1">
+        <label><strong>ID:</strong></label> 1 <br>
+        <label> <strong>Customer ID:</strong> </label> 4<br>
+        <label> <strong>Date:</strong> </label> 8/7/2022
+
+      </fieldset>
+      <input class="btn" type="submit" id="DeleteAdmission" value="Delete Admission">
+      <input class="btn" type="button" value="cancel" onClick="browseAdmission()">
+    </form>
+  </div><!-- delete -->
 
 </body>
+
 </html>
