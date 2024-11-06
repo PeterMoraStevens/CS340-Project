@@ -65,37 +65,41 @@
                 <th><a href="#" onClick="newCustomer()">New</a></th>
                 <th></th>
                 <th>id</th>
-                <th>fname</th>
-                <th>lname</th>
-                <th>homeworld</th>
-                <th>age</th>
+                <th>name</th>
+                <th>email</th>
+                <th>phone</th>
             </tr>
             <tr>
                 <td><a href="#" onClick="updateCustomer('this.customerID')">Edit</a></td>
                 <td><a href="#" onclick="deleteCustomer('this.customerID')">Delete</a></td>
-                <td align="right">1</td>
-                <td>William</td>
-                <td align="right">Adama</td>
-                <td>Caprica</td>
-                <td>61</td>
+                <td>1</td>
+                <td>Sarah Martinez</td>
+                <td>sarah.martinez@email.com</td>
+                <td>555-123-4567</td>
             </tr>
             <tr>
                 <td><a href="#" onClick="updateCustomer('this.customerID')">Edit</a></td>
                 <td><a href="#" onclick="deleteCustomer('this.customerID')">Delete</a></td>
-                <td align="right">2</td>
-                <td>Lee</td>
-                <td align="right">Adama</td>
-                <td>Caprica</td>
-                <td>30</td>
+                <td>2</td>
+                <td>Michael Chen</td>
+                <td>michael.chen@email.com</td>
+                <td>555-234-5678</td>
             </tr>
             <tr>
                 <td><a href="#" onClick="updateCustomer('this.customerID')">Edit</a></td>
                 <td><a href="#" onclick="deleteCustomer('this.customerID')">Delete</a></td>
                 <td>3</td>
-                <td>Laura</td>
-                <td align="right">Roslin</td>
-                <td>Caprica</td>
-                <td><em>NULL</em></td>
+                <td>Olivia Hughes</td>
+                <td>olivia.hughes@email.com</td>
+                <td>555-345-6789</td>
+            </tr>
+            <tr>
+                <td><a href="#" onClick="updateCustomer('this.customerID')">Edit</a></td>
+                <td><a href="#" onclick="deleteCustomer('this.customerID')">Delete</a></td>
+                <td>4</td>
+                <td>James Anderson</td>
+                <td>james.anderson@email.com</td>
+                <td>555-456-7890</td>
             </tr>
         </table>
         <p>&nbsp;</p>
@@ -104,15 +108,9 @@
         <form method="POST" id="addCustomer">
             <legend><strong>Add Customer</strong></legend>
             <fieldset class="fields">
-                <label> first name </label> <input type="text" name="fname">
-                <label> last name </label> <input type="text" name="lname">
-                <label> Homeworld </label> <select name="homeworld">
-                    <option value="0">&nbsp;</option>
-                    <option value="1">Gemenon</option>
-                    <option value="2">Leonis</option>
-                    <option value="3">Caprica</option>
-                </select>
-                <label> age </label> <input type="text" name="age">
+                <label> Name </label> <input type="text" name="name">
+                <label> Email </label> <input type="text" name="email">
+                <label> Phone Number</label> <input type="text" name="phone">
             </fieldset>
             <input class="btn" type="submit" id="addCustomer" value="Add Customer">
             <input class="btn" type="button" value="Cancel" onClick="browseCustomers()">
@@ -125,15 +123,9 @@
             <fieldset class="fields">
                 <input type="hidden" name="customerID" id="updatecustomerID" value="1">
                 <label> ID: </label> 1
-                <label> first name </label> <input type="text" name="fname" value="William">
-                <label> last name </label> <input type="text" name="lname" value="Adama">
-                <label> Homeworld </label> <select name="homeworld">
-                    <option value="0">&nbsp;</option>
-                    <option value="1" selected>Gemenon</option>
-                    <option value="2">Leonis</option>
-                    <option value="3">Caprica</option>
-                </select>
-                <label> age </label> <input type="text" name="age" value="61">
+                <label> Name </label> <input type="text" name="name">
+                <label> Email </label> <input type="text" name="email">
+                <label> Phone Number</label> <input type="text" name="phone">
             </fieldset>
             <input class="btn" type="submit" id="UpdateSaveCustomer" value="Update Customer">
             <input class="btn" type="button" value="Cancel" onClick="browseCustomers()">
@@ -147,7 +139,7 @@
                 <p>Are you sure you wish to delete this customer?</p>
                 <input type="hidden" name="customerID" id="deletecustomerID" value="1">
                 <label><strong>ID:</strong></label> 1
-                <label> <strong>Name</strong> </label> William Adama
+                <label> <strong>Name:</strong> </label> Sarah Martinez
 
             </fieldset>
             <input class="btn" type="submit" id="DeleteCustomer" value="Delete Customer">
