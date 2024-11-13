@@ -21,11 +21,11 @@
       <tr>
         <th><a href="#" onClick="addForm()">New</a></th>
         <th></th>
-        <th>admissionID</th>
-        <th>customerID</th>
-        <th>admissionDate</th>
-        <th>duration</th>
-        <th>fee</th>
+        <th>Admission ID</th>
+        <th>Customer ID</th>
+        <th>Date</th>
+        <th>Duration</th>
+        <th>Fee</th>
       </tr>
       <tr>
         <td><a href="#" onClick="updateForm('this.admissionID')">Edit</a></td>
@@ -70,10 +70,17 @@
     <form method="POST" id="addForm">
       <legend><strong>Add Admission</strong></legend>
       <fieldset class="fields">
-        <label> Customer ID </label> <input type="text" name="customerID">
-        <label> Admission Date </label> <input type="text" name="admissionDate">
+        <label> Customer ID </label>
+        <select name="customerID">
+          <option value="0">&nbsp;</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+        <label> Date </label> <input type="text" name="admissionDate">
         <label> Duration </label> <input type="text" name="duration">
-        <label> Admission Fee </label> <input type="text" name="fee">
+        <label> Fee </label> <input type="text" name="fee">
       </fieldset>
       <input class="btn" type="submit" id="addForm" value="Add Admission">
       <input class="btn" type="button" value="Cancel" onClick="browseForm()">
@@ -86,12 +93,18 @@
       <fieldset class="fields">
         <input type="hidden" name="admissionID" id="updateFormID" value="1">
         <label> ID: </label> 1
-        <label> Customer ID </label> <input type="text" name="customerID" value="4">
-        <label> Admission Date </label> <input type="text" name="admissionDate" value="8/7/2022">
+        <label> Customer ID </label>
+        <select name="customerID">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4" selected>4</option>
+        </select>
+        <label> Date </label> <input type="text" name="admissionDate" value="8/7/2022">
         <label> Duration </label> <input type="text" name="duration" value="0:30:00">
-        <label> Admission Fee </label> <input type="text" name="fee" value="$10.00">
+        <label> Fee </label> <input type="text" name="fee" value="$10.00">
       </fieldset>
-      <input class="btn" type="submit" id="UpdateSaveAdmission" value="Save Update Admission">
+      <input class="btn" type="submit" id="UpdateSaveAdmission" value="Update Admission">
       <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- update -->
