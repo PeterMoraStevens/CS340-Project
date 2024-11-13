@@ -71,7 +71,8 @@ CREATE OR REPLACE TABLE Adoptions(
     adoptionDate datetime NOT NULL,
     adoptionFee decimal NOT NULL,
     PRIMARY KEY(adoptionID),
-    FOREIGN KEY(customerID) REFERENCES Customers(customerID)
+    FOREIGN KEY(customerID) REFERENCES Customers(customerID),
+    FOREIGN KEY(catID) REFERENCES Cats(catID)
 );
 
 INSERT INTO Customers(

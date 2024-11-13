@@ -78,11 +78,22 @@
                 <label> Name </label> <input type="text" name="catName">
                 <label> Description </label> <input type="text" name="catDescription">
                 <label> Age </label> <input type="text" name="age">
-                <label> Breed </label> <input type="text" name="breed">
-                <label> Adopted </label> <select name="adopted">
-                    <option value="0">&nbsp;</option>
+                <label> Breed </label>
+                <select name="breed">
+                    <option value="Domestic Shorthair">Domestic Shorthair</option>
+                    <option value="Siamese">Siamese</option>
+                    <option value="Maine Coon">Maine Coon</option>
+                    <option value="Calico">Calico</option>
+                    <option value="Persian">Persian</option>
+                    <option value="Bengal">Bengal</option>
+                    <option value="Sphynx">Sphynx</option>
+                    <option value="Ragdoll">Ragdoll</option>
+                    <option value="Other">Other</option>
+                </select>
+                <label> Adopted </label>
+                <select name="adopted">
+                    <option value="0" selected>No</option>
                     <option value="1">Yes</option>
-                    <option value="2">No</option>
                 </select>
             </fieldset>
             <input class="btn" type="submit" id="addForm" value="Add Cat">
@@ -100,11 +111,21 @@
                 <label> Description </label> <input type="text" name="catDescription"
                     value="A shy black cat who takes time to warm up but loves head scratches.">
                 <label> Age </label> <input type="text" name="age" value="2">
-                <label> Breed </label> <input type="text" name="breed" value="Domestic Shorthair">
+                <label> Breed </label>
+                <select name="breed">
+                    <option value="Domestic Shorthair" selected>Domestic Shorthair</option>
+                    <option value="Siamese">Siamese</option>
+                    <option value="Maine Coon">Maine Coon</option>
+                    <option value="Calico">Calico</option>
+                    <option value="Persian">Persian</option>
+                    <option value="Bengal">Bengal</option>
+                    <option value="Sphynx">Sphynx</option>
+                    <option value="Ragdoll">Ragdoll</option>
+                    <option value="Other">Other</option>
+                </select>
                 <label> Adopted </label> <select name="adopted">
-                    <option value="0">&nbsp;</option>
+                    <option value="0" selected>No</option>
                     <option value="1">Yes</option>
-                    <option value="2" selected>No</option>
                 </select>
             </fieldset>
             <input class="btn" type="submit" id="UpdateSaveCat" value="Update Cat">
