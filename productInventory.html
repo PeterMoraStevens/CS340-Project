@@ -3,13 +3,13 @@
 <html>
 
 <head>
-  <title>ProductInventory</title>
+  <title>Product Inventory</title>
   <link href="style/style.css" rel="stylesheet" type="text/css" />
   <script src="scripts.js"></script>
 </head>
 
 <body onload="browseForm()">
-  <h1>ProductInventory</h1>
+  <h1>Product Inventory</h1>
 
   [ <a href="index.html">Home</a> | <a href="admissions.html">Admissions</a> | <a href="adoptions.html">Adoptions</a>
   | <a href="cats.html">Cats</a> | <a href="customers.html">Customers</a> | <a href="productInventory.html">Product
@@ -21,10 +21,10 @@
       <tr>
         <th><a href="#" onClick="addForm()">New</a></th>
         <th></th>
-        <th>productID</th>
-        <th>productName</th>
-        <th>price</th>
-        <th>productCategory</th>
+        <th>Product ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
       </tr>
       <tr>
         <td><a href="#" onClick="updateForm(this.productID)">Edit</a></td>
@@ -113,9 +113,15 @@
     <form method="POST" id="addForm">
       <legend><strong>Add Product</strong></legend>
       <fieldset class="fields">
-        <label> Product Name </label> <input type="text" name="productName">
-        <label> Price </label> <input type="text" name="price">
-        <label> Product Category </label> <input type="text" name="productCategory">
+        <label> Name </label> <input type="text" name="productName">
+        <label> Price </label> <input type="text" name="price" placeholder="$0.00">
+        <label> Category </label>
+        <select name="productCategory">
+          <option value="0">&nbsp;</option>
+          <option value="Drink">Drink</option>
+          <option value="Snack">Snack</option>
+          <option value="Merchandise">Merchandise</option>
+        </select>
       </fieldset>
       <input class="btn" type="submit" id="addForm" value="Add Product">
       <input class="btn" type="button" value="Cancel" onClick="browseForm()">
@@ -128,11 +134,16 @@
       <fieldset class="fields">
         <input type="hidden" name="personID" id="updateFormID" value="1">
         <label> ID: </label> 1
-        <label> Product Name </label> <input type="text" name="productName" value="Cat-ppuccino">
-        <label> Price </label> <input type="text" name="price" value="$4.50">
-        <label> Product Category </label> <input type="text" name="productCategory" value="Drink">
+        <label> Name </label> <input type="text" name="productName" value="Cat-ppuccino">
+        <label> Price </label> <input type="text" name="price" value="$4.50" placeholder="$0.00">
+        <label> Category </label>
+        <select name="productCategory">
+          <option value="Drink" selected>Drink</option>
+          <option value="Snack">Snack</option>
+          <option value="Merchandise">Merchandise</option>
+        </select>
       </fieldset>
-      <input class="btn" type="submit" id="UpdateSaveProduct" value="Save Update Product">
+      <input class="btn" type="submit" id="UpdateSaveProduct" value="Update Product">
       <input class="btn" type="button" value="Cancel" onClick="browseForm()">
     </form>
   </div><!-- update -->
