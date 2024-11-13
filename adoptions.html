@@ -52,10 +52,30 @@
         <form method="POST" id="addForm">
             <legend><strong>Add Adoption</strong></legend>
             <fieldset class="fields">
-                <label> Customer ID </label> <input type="text" name="customerID">
-                <label> Cat ID </label> <input type="text" name="catID">
-                <label> Date </label> <input type="text" name="adoptionDate">
-                <label> Fee </label> <input type="text" name="adoptionFee">
+                <label> Customer ID </label>
+            <select name="customerID">
+                <option value="0">&nbsp;</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+
+            <label> Cat ID </label>
+            <select name="catID">
+                <option value="0">&nbsp;</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+
+            <label> Date </label>
+            <input type="text" name="adoptionDate" placeholder="MM/DD/YYYY">
+
+            <!-- Do we want to have the user incude the $ sign? Is there a way around this? -->
+            <label> Fee </label>
+            <input type="text" name="adoptionFee" placeholder="$0.00"> 
             </fieldset>
             <input class="btn" type="submit" id="addForm" value="Add Adoption">
             <input class="btn" type="button" value="Cancel" onClick="browseForm()">
@@ -68,10 +88,23 @@
             <fieldset class="fields">
                 <input type="hidden" name="adoptionID" id="updateFormID" value="1">
                 <label> ID: </label> 1
-                <label> Customer ID </label> <input type="text" name="customerID" value="2">
-                <label> Cat ID </label> <input type="text" name="catID" value="3">
-                <label> Date </label> <input type="text" name="adoptionDate" value="7/3/2023">
-                <label> Fee </label> <input type="text" name="adoptionFee" value="$30.00">
+                <label> Customer ID </label>
+            <select name="customerID">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+
+            <label> Cat ID </label>
+            <select name="catID">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+            </select>
+                <label> Date </label> <input type="text" name="adoptionDate" value="7/3/2023" placeholder="MM/DD/YYYY">
+                <label> Fee </label> <input type="text" name="adoptionFee" value="$30.00" placeholder="$0.00">
             </fieldset>
             <input class="btn" type="submit" id="UpdateSaveAdoption" value="Update Adoption">
             <input class="btn" type="button" value="Cancel" onClick="browseForm()">
