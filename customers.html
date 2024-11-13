@@ -22,10 +22,10 @@
             <tr>
                 <th><a href="#" onClick="addForm()">New</a></th>
                 <th></th>
-                <th>id</th>
-                <th>name</th>
-                <th>email</th>
-                <th>phone</th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
             </tr>
             <tr>
                 <td><a href="#" onClick="updateForm('this.customerID')">Edit</a></td>
@@ -66,9 +66,9 @@
         <form method="POST" id="addForm">
             <legend><strong>Add Customer</strong></legend>
             <fieldset class="fields">
-                <label> Name </label> <input type="text" name="name">
-                <label> Email </label> <input type="text" name="email">
-                <label> Phone Number</label> <input type="text" name="phone">
+                <label> Name </label> <input type="text" name="name" placeholder="First Last">
+                <label> Email </label> <input type="text" name="email" placeholder="example@company.com">
+                <label> Phone Number</label> <input type="text" name="phone" placeholder="123-456-7890">
             </fieldset>
             <input class="btn" type="submit" id="addForm" value="Add Customer">
             <input class="btn" type="button" value="Cancel" onClick="browseForm()">
@@ -81,9 +81,9 @@
             <fieldset class="fields">
                 <input type="hidden" name="customerID" id="updateFormID" value="1">
                 <label> ID: </label> 1
-                <label> Name </label> <input type="text" name="name">
-                <label> Email </label> <input type="text" name="email">
-                <label> Phone Number</label> <input type="text" name="phone">
+                <label> Name </label> <input type="text" name="name" value="Sarah Martinez" placeholder="First Last">
+                <label> Email </label> <input type="text" name="email" value="sarah.martinez@email.com" placeholder="example@company.com">
+                <label> Phone Number</label> <input type="text" name="phone" value="555-123-4567" placeholder="123-456-7890">
             </fieldset>
             <input class="btn" type="submit" id="UpdateSaveCustomer" value="Update Customer">
             <input class="btn" type="button" value="Cancel" onClick="browseForm()">
