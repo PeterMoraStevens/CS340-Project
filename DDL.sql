@@ -75,6 +75,7 @@ CREATE OR REPLACE TABLE Adoptions(
     FOREIGN KEY(catID) REFERENCES Cats(catID)
 );
 
+-- Inserting 4 
 INSERT INTO Customers(
     name,
     email,
