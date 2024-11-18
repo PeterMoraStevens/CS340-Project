@@ -20,11 +20,11 @@ CREATE OR REPLACE TABLE Admissions(
     duration int NOT NULL,
     fee decimal NOT NULL,
     PRIMARY KEY(admissionID),
-    FOREIGN KEY(customerID) REFERENCES Customers(customerID)
+    FOREIGN KEY(customerID) REFERENCES Customers(customerID) ON DELETE CASCADE
 );
 
 -- stores every product we have related to the consumables and merch
-CREATE OR REPLACE TABLE ProductInventory(
+CREATE OR REPLACE TABLE Products(
     productID int AUTO_INCREMENT UNIQUE NOT NULL,
     productName varChar(100) NOT NULL,
     price decimal NOT NULL,
@@ -39,17 +39,17 @@ CREATE OR REPLACE TABLE Purchases(
     purchaseDate datetime not NULL,
     purchaseCost decimal not NULL,
     PRIMARY KEY(purchaseID),
-    FOREIGN KEY(customerID) REFERENCES Customers(customerID),
+    FOREIGN KEY(customerID) REFERENCES Customers(customerID) ON DELETE CASCADE,
 );
 
--- An intersection table between Purchases and ProductInventory to store the items purchased and in which purchase they were sold
+-- An intersection table between Purchases and Products to store the items purchased and in which purchase they were sold
 CREATE OR REPLACE TABLE ProductPurchases(
     productPurchaseID int AUTO_INCREMENT UNIQUE NOT NULL,
     productID int NOT NULL,
     purchaseID int NOT NULL,
     PRIMARY KEY(productPurchaseID),
-    FOREIGN KEY(productID) REFERENCES ProductInventory(productID),
-    FOREIGN KEY(purchaseID) REFERENCES Purchases(purchaseID)
+    FOREIGN KEY(productID) REFERENCES Products(productID) ON DELETE CASCADE,
+    FOREIGN KEY(purchaseID) REFERENCES Purchases(purchaseID) ON DELETE CASCADE
 );
 
 -- A table for our cats with updates about their information for customers
@@ -71,8 +71,8 @@ CREATE OR REPLACE TABLE Adoptions(
     adoptionDate datetime NOT NULL,
     adoptionFee decimal NOT NULL,
     PRIMARY KEY(adoptionID),
-    FOREIGN KEY(customerID) REFERENCES Customers(customerID),
-    FOREIGN KEY(catID) REFERENCES Cats(catID)
+    FOREIGN KEY(customerID) REFERENCES Customers(customerID) ON DELETE CASCADE,
+    FOREIGN KEY(catID) REFERENCES Cats(catID) ON DELETE CASCADE
 );
 
 -- Inserting 4 
@@ -134,7 +134,7 @@ INSERT INTO Admissions
     10.00
 );
 
-INSERT INTO ProductInventory
+INSERT INTO Products
 (
     productName,
     price,

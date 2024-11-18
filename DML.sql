@@ -40,6 +40,7 @@
     WHERE adoptionID = :adoptionID_in_form
 
     -- Delete a single Adoption record based on adoptionId from the form
+    -- We do not need to cascade and delete cats or customers related to this adoption
     DELETE FROM Adoptions WHERE adoptionID = :adoptionID_in_form
 
 
@@ -80,6 +81,7 @@
     WHERE admissionID = :admissionID_in_form
 
     -- Delete a single Admission record based on admissionID from the form
+    -- We do not need to cascade and delete all customers related to this admission
     DELETE FROM Admissions WHERE admissionID = :admissionID_in_form
 
 
@@ -123,6 +125,7 @@
     WHERE catID = :catID_in_form
 
     -- Delete a single Cat record based on catID from the form
+    -- This cascades and removes every adoption associated with the cat
     DELETE FROM Cats WHERE catID = :catID_in_form
 
 
@@ -133,7 +136,7 @@
     -- Recieve a single customer record based on customerID from the form
     SELECT customerID,name, email, phone
     FROM Customers 
-    WHERE custmerID = :customerID_in_form
+    WHERE customerID = :customerID_in_form
 
     -- Insert a new customer record
     INSERT INTO Customers
@@ -157,23 +160,24 @@
         email = :email_in_form,
         phone = :phone_in_form
     )
-    WHERE custmerID = :customerID_in_form
+    WHERE customerID = :customerID_in_form
 
     -- Delete a single customer record based on customerID from the form
+    -- This cascades and removes every admission, adoption, and purchase associated with this specific customer 
     DELETE FROM Customers WHERE customerID = :customerID_in_form
 
 
--- ProductInventory interaction
-    -- Recieve all product records for the ProductInventory page
-    SELECT * FROM ProductInventory;
+-- Products interaction
+    -- Recieve all product records for the Products page
+    SELECT * FROM Products;
 
     -- Recieve a single product record based on productID from the form
     SELECT productID, productName, price, productCategory
-    FROM ProductInventory 
+    FROM Products 
     WHERE productID = :productID_in_form
 
     -- Insert a new product record
-    INSERT INTO ProductInventory
+    INSERT INTO Products
     (
         productName, 
         price, 
@@ -187,7 +191,7 @@
     );
 
     -- Edit/Update a single product record based on productID from the form
-    UPDATE ProductInventory
+    UPDATE Products
     SET 
     (
         productName = :productName_in_form,
@@ -197,7 +201,8 @@
     WHERE productID = :productID_in_form
 
     -- Delete a single product record based on productID from the form
-    DELETE FROM ProductInventory WHERE productID = :productID_in_form
+    -- This cascades ane removes all ProductPurchases associated with this product
+    DELETE FROM Products WHERE productID = :productID_in_form
 
 
 -- Purchases interaction
@@ -205,20 +210,20 @@
     SELECT * FROM Purchases;
 
     -- Recieve a single purchase record based on purchaseID from the form
-    SELECT purchaseID, custmerID, purchaseDate, purchaseCost
+    SELECT purchaseID, customerID, purchaseDate, purchaseCost
     FROM Purchases 
     WHERE purchaseID = :purchaseID_in_form
 
     -- Insert a new purchase record
     INSERT INTO Purchases
     (
-        custmerID, 
+        customerID, 
         purchaseDate, 
         purchaseCost
     ) 
     VALUES 
     (
-        :custmerID_in_form,
+        :customerID_in_form,
         :purchaseDate_in_form,
         :purchaseCost_in_form,
     );
@@ -227,13 +232,14 @@
     UPDATE Purchases
     SET 
     (
-        custmerID = :custmerID_in_form,
+        customerID = :customerID_in_form,
         purchaseDate = :purchaseDate_in_form,
         purchaseCost = :purchaseCost_in_form
     )
     WHERE purchaseID = :purchaseID_in_form
 
     -- Delete a single purchase record based on purchaseID from the form
+    -- On delete cascades deletions to every productpurchase associated with this purchase
     DELETE FROM Purchases WHERE productID = :productID_in_form
 
 
