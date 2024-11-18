@@ -94,7 +94,7 @@ INSERT INTO Customers(
 (
     "Olivia Hughes",
     "olivia.hughes@email.com",
-    "555-345-6789" 
+    NULL
 ),
 (
     "James Anderson",
