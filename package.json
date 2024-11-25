@@ -1,0 +1,17 @@
+{
+  "name": "cs340-project",
+  "version": "1.0.0",
+  "description": "This repository is for team 21's CS340 (intro to databases) project.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "forever": "^4.0.3",
+    "mysql": "^2.18.1"
+  }
+}
