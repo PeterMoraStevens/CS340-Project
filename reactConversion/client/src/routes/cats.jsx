@@ -34,6 +34,18 @@ const DeleteCatForm = ({ catObj, hiddenStateUpdater }) => {
 const UpdateCatForm = ({ catObj, hiddenStateUpdater }) => {
   if (!catObj) return null;
 
+  const breeds = [
+    "Domestic Shorthair",
+    "Siamese",
+    "Maine Coon",
+    "Calico",
+    "Persian",
+    "Bengal",
+    "Sphynx",
+    "Ragdoll",
+    "Other",
+  ];
+
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Update Cat</div>
@@ -56,12 +68,16 @@ const UpdateCatForm = ({ catObj, hiddenStateUpdater }) => {
           defaultValue={catObj.Age}
           className="input input-bordered w-full max-w-xs"
         />
-        <input
-          type="text"
-          placeholder="Breed"
+        <select
           defaultValue={catObj.Breed}
-          className="input input-bordered w-full max-w-xs"
-        />
+          className="select select-bordered w-full max-w-xs"
+        >
+          {breeds.map((breed, index) => (
+            <option key={index} value={breed}>
+              {breed}
+            </option>
+          ))}
+        </select>
         <input
           type="checkbox"
           defaultChecked={catObj.Adopted}
@@ -81,6 +97,18 @@ const UpdateCatForm = ({ catObj, hiddenStateUpdater }) => {
 const AddCatForm = ({ hidden, hiddenStateUpdater }) => {
   if (hidden) return null;
 
+  const breeds = [
+    "Domestic Shorthair",
+    "Siamese",
+    "Maine Coon",
+    "Calico",
+    "Persian",
+    "Bengal",
+    "Sphynx",
+    "Ragdoll",
+    "Other",
+  ];
+
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Add Cat</div>
@@ -88,7 +116,16 @@ const AddCatForm = ({ hidden, hiddenStateUpdater }) => {
         <input type="text" placeholder="Name" className="input input-bordered w-full max-w-xs" />
         <textarea placeholder="Description" className="textarea textarea-bordered w-full max-w-xs" />
         <input type="number" placeholder="Age" className="input input-bordered w-full max-w-xs" />
-        <input type="text" placeholder="Breed" className="input input-bordered w-full max-w-xs" />
+        <select className="select select-bordered w-full max-w-xs">
+          <option value="" disabled selected>
+            Select a breed
+          </option>
+          {breeds.map((breed, index) => (
+            <option key={index} value={breed}>
+              {breed}
+            </option>
+          ))}
+        </select>
         <input type="checkbox" className="checkbox" /> Adopted
         <div className="btn" onClick={() => hiddenStateUpdater(true)}>
           Cancel
@@ -123,15 +160,15 @@ const Cats = () => {
       Name: 'Bella',
       Description: 'A calm and affectionate Maine Coon who enjoys lounging in sunny spots.',
       Age: 3,
-      Breed: 'Siamese',
+      Breed: 'Maine Coon',
       Adopted: true,
     },
     {
       CatID: 2,
-      Name: 'Mittens',
-      Description: 'A shy but loving cat.',
+      Name: 'Max',
+      Description: 'A sweet calico who loves snuggling on laps.',
       Age: 3,
-      Breed: 'Siamese',
+      Breed: 'Calico',
       Adopted: false,
     },
   ]);
