@@ -33,6 +33,8 @@ const DeleteProductForm = ({ productObj, hiddenStateUpdater }) => {
 
 const UpdateProductForm = ({ productObj, hiddenStateUpdater }) => {
   if (!productObj) return null;
+  
+  const categories = ["Drink", "Snack", "Merchandise"];
 
   return (
     <div className="mt-8">
@@ -51,12 +53,19 @@ const UpdateProductForm = ({ productObj, hiddenStateUpdater }) => {
           defaultValue={productObj.Price}
           className="input input-bordered w-full max-w-xs"
         />
-        <input
-          type="text"
-          placeholder="Category"
+        <select
+          className="select select-bordered w-full max-w-xs"
           defaultValue={productObj.Category}
-          className="input input-bordered w-full max-w-xs"
-        />
+        >
+          <option value="" disabled>
+            Select a category
+          </option>
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
         <div className="flex gap-2">
           <div className="btn">Update Product</div>
           <div className="btn" onClick={() => hiddenStateUpdater(null)}>
@@ -71,13 +80,24 @@ const UpdateProductForm = ({ productObj, hiddenStateUpdater }) => {
 const AddProductForm = ({ hidden, hiddenStateUpdater }) => {
   if (hidden) return null;
 
+  const categories = ["Drink", "Snack", "Merchandise"];
+
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Add Product</div>
       <div className="flex flex-col gap-2 items-center">
         <input type="text" placeholder="Name" className="input input-bordered w-full max-w-xs" />
         <input type="number" placeholder="Price" className="input input-bordered w-full max-w-xs" />
-        <input type="text" placeholder="Category" className="input input-bordered w-full max-w-xs" />
+        <select className="select select-bordered w-full max-w-xs">
+          <option value="" disabled selected>
+            Select a category
+          </option>
+          {categories.map((category, index) => (
+            <option key={index} value={category}>
+              {category}
+            </option>
+          ))}
+        </select>
         <div className="btn" onClick={() => hiddenStateUpdater(true)}>
           Cancel
         </div>
