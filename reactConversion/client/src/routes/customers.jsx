@@ -49,27 +49,45 @@ const UpdateCustomerForm = ({ customerObj, hiddenStateUpdater, refreshCustomers 
     <div className="mt-8">
       <div className="font-bold text-center">Update Customer</div>
       <div className="flex flex-col gap-2 items-center">
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <input
-          type="tel"
-          placeholder="Phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
+      <div className="w-full max-w-xs">
+          <label htmlFor="name" className="block text-sm font-medium">
+            Name
+          </label>
+          <input
+            id="name"
+            type="text"
+            placeholder="First and Last"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="input input-bordered w-full"
+          />
+        </div>
+        <div className="w-full max-w-xs">
+          <label htmlFor="email" className="block text-sm font-medium">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            placeholder="example@company.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="input input-bordered w-full"
+          />
+        </div>
+        <div className="w-full max-w-xs">
+          <label htmlFor="phone" className="block text-sm font-medium">
+            Phone
+          </label>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="123-456-7890"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className="input input-bordered w-full"
+          />
+        </div>
         <div className="flex gap-2">
           <div className="btn" onClick={handleUpdate}>Update Customer</div>
           <div className="btn" onClick={() => hiddenStateUpdater(null)}>Cancel</div>
@@ -98,27 +116,45 @@ const AddCustomerForm = ({ hidden, hiddenStateUpdater, refreshCustomers }) => {
     <div className="mt-8">
       <div className="font-bold text-center">Add Customer</div>
       <div className="flex flex-col gap-2 items-center">
-        <input
-          type="text"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <input
-          type="tel"
-          placeholder="Phone"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
+      <div className="w-full max-w-xs">
+          <label htmlFor="name" className="block text-sm font-medium">
+            Name
+          </label>
+          <input
+            id="name"
+            type="text"
+            placeholder="First and Last"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="input input-bordered w-full"
+          />
+        </div>
+        <div className="w-full max-w-xs">
+          <label htmlFor="email" className="block text-sm font-medium">
+            Email
+          </label>
+          <input
+            id="email"
+            type="email"
+            placeholder="example@company.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="input input-bordered w-full"
+          />
+        </div>
+        <div className="w-full max-w-xs">
+          <label htmlFor="phone" className="block text-sm font-medium">
+            Phone
+          </label>
+          <input
+            id="phone"
+            type="tel"
+            placeholder="123-456-7890"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            className="input input-bordered w-full"
+          />
+        </div>
         <div className="flex gap-2">
           <div className="btn" onClick={handleAdd}>Add Customer</div>
           <div className="btn" onClick={() => hiddenStateUpdater(true)}>Cancel</div>
