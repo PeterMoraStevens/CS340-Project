@@ -1,89 +1,157 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { format, parseISO } from 'date-fns';
+import axios from "axios";
 
-const DeleteAdmissionForm = ({ admissionObj, hiddenStateUpdater }) => {
+const DeleteAdmissionForm = ({ admissionObj, hiddenStateUpdater, refreshAdmissions }) => {
   if (!admissionObj) return null;
+
+  const handleDelete = () => {
+    axios.delete(`/deleteAdmission/${admissionObj.admissionID}`).then(() => {
+      refreshAdmissions();
+      hiddenStateUpdater(null);
+    });
+  };
 
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Delete Admission</div>
       <div className="flex flex-col gap-2 items-center">
         <div>Are you sure you want to delete this admission?</div>
-        <div>Admission ID: {admissionObj.AdmissionID}</div>
-        <div>Customer ID: {admissionObj.CustomerID}</div>
+        <div>Admission ID: {admissionObj.admissionID}</div>
+        <div>Customer ID: {admissionObj.customerID}</div>
+        <div>Date: {admissionObj.admissionDate}</div>
+        <div>Duration: {admissionObj.duration} minutes</div>
+        <div>Fee: ${admissionObj.fee}</div>
         <div className="flex gap-2">
-          <div
-            className="btn"
-            onClick={() => {
-              hiddenStateUpdater(null);
-            }}
-          >
-            Confirm Delete
-          </div>
-          <div className="btn" onClick={() => hiddenStateUpdater(null)}>
-            Cancel
-          </div>
+          <div className="btn" onClick={handleDelete}>Confirm Delete</div>
+          <div className="btn" onClick={() => hiddenStateUpdater(null)}>Cancel</div>
         </div>
       </div>
     </div>
   );
 };
 
-const UpdateAdmissionForm = ({ admissionObj, hiddenStateUpdater }) => {
+const UpdateAdmissionForm = ({ admissionObj, hiddenStateUpdater, refreshAdmissions }) => {
   if (!admissionObj) return null;
+
+  const [customerID, setCustomerID] = useState(admissionObj.customerID);
+  const [date, setDate] = useState(admissionObj.admissionDate);
+  const [duration, setDuration] = useState(admissionObj.duration);
+  const [fee, setFee] = useState(admissionObj.fee);
+
+  const handleUpdate = () => {
+    axios.put(`/updateAdmission/${admissionObj.admissionID}`, { customerID, date, duration, fee }).then(() => {
+      refreshAdmissions();
+      hiddenStateUpdater(null);
+    });
+  };
 
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Update Admission</div>
       <div className="flex flex-col gap-2 items-center">
-        <div>Admission ID: {admissionObj.AdmissionID}</div>
+        <label>Customer ID </label>
         <input
           type="number"
-          placeholder="Customer ID"
-          defaultValue={admissionObj.CustomerID}
+          placeholder="1"
+          value={customerID}
+          onChange={(e) => setCustomerID(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Date </label>
         <input
           type="date"
-          placeholder="Admission Date"
-          defaultValue={admissionObj.Date}
+          placeholder="YYYY-MM-DD"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Duration (minutes) </label>
         <input
           type="number"
-          placeholder="Duration (in minutes)"
-          defaultValue={admissionObj.Duration}
+          placeholder="30"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Fee (dollars) $</label>
         <input
           type="number"
-          placeholder="Fee (in dollars)"
-          defaultValue={admissionObj.Fee}
+          placeholder="10.00"
+          value={fee}
+          onChange={(e) => setFee(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
         <div className="flex gap-2">
-          <div className="btn">Update Admission</div>
-          <div className="btn" onClick={() => hiddenStateUpdater(null)}>
-            Cancel
-          </div>
+          <div className="btn" onClick={handleUpdate}>Update Admission</div>
+          <div className="btn" onClick={() => hiddenStateUpdater(null)}>Cancel</div>
         </div>
       </div>
     </div>
   );
 };
 
-const AddAdmissionForm = ({ hidden, hiddenStateUpdater }) => {
+const AddAdmissionForm = ({ hidden, hiddenStateUpdater, refreshAdmissions }) => {
+  const [customerID, setCustomerID] = useState('');
+  const [admissionDate, setDate] = useState('');
+  const [duration, setDuration] = useState('');
+  const [fee, setFee] = useState('');
+
+  const handleAdd = () => {
+    axios.post('/addAdmission', { customerID, admissionDate, duration, fee }).then(() => {
+      refreshAdmissions();
+      hiddenStateUpdater(true);
+      setCustomerID("");
+      setDate("");
+      setDuration("");
+      setFee("");
+    });
+  };
+
   if (hidden) return null;
 
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Add Admission</div>
       <div className="flex flex-col gap-2 items-center">
-        <input type="number" placeholder="Customer ID" className="input input-bordered w-full max-w-xs" />
-        <input type="date" placeholder="Admission Date" className="input input-bordered w-full max-w-xs" />
-        <input type="number" placeholder="Duration (in minutes)" className="input input-bordered w-full max-w-xs" />
-        <input type="number" placeholder="Fee (in dollars)" className="input input-bordered w-full max-w-xs" />
-        <div className="btn" onClick={() => hiddenStateUpdater(true)}>
-          Cancel
+        <label>Customer ID </label>
+        <input
+          type="number"
+          placeholder="1"
+          value={customerID}
+          onChange={(e) => setCustomerID(e.target.value)}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <label>Date </label>
+        <input
+          type="date"
+          placeholder="YYYY-MM-DD"
+          value={admissionDate}
+          onChange={(e) => {
+            setDate(e.target.value)
+            console.log(admissionDate)
+          }}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <label>Duration (minutes) </label>
+        <input
+          type="number"
+          placeholder="30"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <label>Fee (dollars) $</label>
+        <input
+          type="number"
+          placeholder="10.00"
+          value={fee}
+          onChange={(e) => setFee(e.target.value)}
+          className="input input-bordered w-full max-w-xs"
+        />
+        <div className="flex gap-2">
+          <div className="btn" onClick={handleAdd}>Add Admission</div>
+          <div className="btn" onClick={() => hiddenStateUpdater(true)}>Cancel</div>
         </div>
       </div>
     </div>
@@ -93,48 +161,32 @@ const AddAdmissionForm = ({ hidden, hiddenStateUpdater }) => {
 const Admissions = () => {
   const [selectedAdmission, setSelectedAdmission] = useState(null);
   const [newAdmissionFormHidden, setNewAdmissionFormHidden] = useState(true);
-  const [admissions, setAdmissions] = useState([
-    {
-      AdmissionID: 1,
-      CustomerID: 4,
-      Date: '8/7/2022',
-      Duration: 30,
-      Fee: 10.0,
-    },
-    {
-      AdmissionID: 2,
-      CustomerID: 3,
-      Date: '2/25/2023',
-      Duration: 15,
-      Fee: 5.0,
-    },
-    {
-      AdmissionID: 3,
-      CustomerID: 4,
-      Date: '3/12/2023',
-      Duration: 60,
-      Fee: 20.0,
-    },
-    {
-      AdmissionID: 4,
-      CustomerID: 1,
-      Date: '10/10/2024',
-      Duration: 30,
-      Fee: 10.0,
-    },
-  ]);
+  const [admissions, setAdmissions] = useState([]);
+
+  const refreshAdmissions = () => {
+    axios.get("/getAdmissions").then((res) => {
+      setAdmissions(res.data);
+    });
+  };
+
+  useEffect(() => {
+    refreshAdmissions();
+  }, []);
 
   return (
     <div>
-      <div className="overflow-x-auto max-w-[85%] mx-auto mt-8">
-        <table className="table" hidden={selectedAdmission || !newAdmissionFormHidden}>
+      <div className="overflow-x-auto max-w-[85%] mx-auto mt-8" hidden={selectedAdmission !== null || newAdmissionFormHidden !== true}>
+        <table className="table">
           <thead>
             <tr>
               <th>
-                <button className="btn" onClick={() => {
-                  setNewAdmissionFormHidden(false)
-                  setSelectedAdmission({})
-                }}>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    setNewAdmissionFormHidden(false);
+                    setSelectedAdmission(null);
+                  }}
+                >
                   New
                 </button>
               </th>
@@ -148,39 +200,47 @@ const Admissions = () => {
           </thead>
           <tbody>
             {admissions.map((admission) => (
-              <tr key={admission.AdmissionID}>
+              <tr key={admission.admissionID}>
                 <th>
-                  <div className="btn" onClick={() => {
-                    setSelectedAdmission({ ...admission, action: 'update' })
-                    setNewAdmissionFormHidden(true)
-                  }}>
+                  <div
+                    className="btn"
+                    onClick={() => {
+                      setSelectedAdmission({ ...admission, action: 'update' });
+                      setNewAdmissionFormHidden(true);
+                    }}
+                  >
                     Edit
                   </div>
                 </th>
                 <td>
-                  <div className="btn" onClick={() => {
-                    setSelectedAdmission({ ...admission, action: 'delete' })
-                    setNewAdmissionFormHidden(true)
-                  }}>
+                  <div
+                    className="btn"
+                    onClick={() => {
+                      setSelectedAdmission({ ...admission, action: 'delete' });
+                      setNewAdmissionFormHidden(true);
+                    }}
+                  >
                     Delete
                   </div>
                 </td>
-                <td>{admission.AdmissionID}</td>
-                <td>{admission.CustomerID}</td>
-                <td>{admission.Date}</td>
-                <td>{admission.Duration}</td>
-                <td>${admission.Fee}</td>
+                <td>{admission.admissionID}</td>
+                <td>{admission.customerID}</td>
+                <td>
+                  {admission.admissionDate}
+                </td>
+                <td>{admission.duration} minutes</td>
+                <td>${admission.fee}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <AddAdmissionForm hidden={newAdmissionFormHidden} hiddenStateUpdater={setNewAdmissionFormHidden} />
+      <AddAdmissionForm hidden={newAdmissionFormHidden} hiddenStateUpdater={setNewAdmissionFormHidden} refreshAdmissions={refreshAdmissions} />
       {selectedAdmission?.action === 'update' && (
-        <UpdateAdmissionForm admissionObj={selectedAdmission} hiddenStateUpdater={setSelectedAdmission} />
+        <UpdateAdmissionForm admissionObj={selectedAdmission} hiddenStateUpdater={setSelectedAdmission} refreshAdmissions={refreshAdmissions} />
       )}
       {selectedAdmission?.action === 'delete' && (
-        <DeleteAdmissionForm admissionObj={selectedAdmission} hiddenStateUpdater={setSelectedAdmission} />
+        <DeleteAdmissionForm admissionObj={selectedAdmission} hiddenStateUpdater={setSelectedAdmission} refreshAdmissions={refreshAdmissions} />
       )}
     </div>
   );
