@@ -49,23 +49,26 @@ const UpdateCustomerForm = ({ customerObj, hiddenStateUpdater, refreshCustomers 
     <div className="mt-8">
       <div className="font-bold text-center">Update Customer</div>
       <div className="flex flex-col gap-2 items-center">
+        <label>Name</label>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="First Last"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Email</label>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="example@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Phone</label>
         <input
           type="tel"
-          placeholder="Phone"
+          placeholder="123-456-7890"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className="input input-bordered w-full max-w-xs"
@@ -98,23 +101,26 @@ const AddCustomerForm = ({ hidden, hiddenStateUpdater, refreshCustomers }) => {
     <div className="mt-8">
       <div className="font-bold text-center">Add Customer</div>
       <div className="flex flex-col gap-2 items-center">
+        <label>Name</label>
         <input
           type="text"
-          placeholder="Name"
+          placeholder="First Last"
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Email</label>
         <input
           type="email"
-          placeholder="Email"
+          placeholder="example@email.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Phone</label>
         <input
           type="tel"
-          placeholder="Phone"
+          placeholder="123-456-7890"
           value={phone}
           onChange={(e) => setPhone(e.target.value)}
           className="input input-bordered w-full max-w-xs"

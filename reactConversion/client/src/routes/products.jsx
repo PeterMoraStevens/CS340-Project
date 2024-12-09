@@ -64,30 +64,38 @@ const UpdateProductForm = ({ productObj, hiddenStateUpdater, refreshProducts }) 
       <div className="font-bold text-center">Update Product</div>
       <div className="flex flex-col gap-2 items-center">
         <div>Product ID: {productObj.productID}</div>
+        <label>Name</label>
         <input
           type="text"
           name="productName"
-          placeholder="Name"
+          placeholder="Be creative!"
           value={formData.productName}
           onChange={handleChange}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Price ($)</label>
         <input
           type="number"
           name="price"
-          placeholder="Price"
+          placeholder="0"
           value={formData.price}
           onChange={handleChange}
           className="input input-bordered w-full max-w-xs"
         />
-        <input
-          type="text"
+        <label>Category</label>
+        <select
           name="productCategory"
-          placeholder="Category"
           value={formData.productCategory}
           onChange={handleChange}
           className="input input-bordered w-full max-w-xs"
-        />
+        >
+          <option value="" disabled>
+            Select a category
+          </option>
+          <option value="Drink">Drink</option>
+          <option value="Snack">Snack</option>
+          <option value="Merchandise">Merchandise</option>
+        </select>
         <div className="flex gap-2">
           <div className="btn" onClick={handleUpdate}>
             Update Product
@@ -128,30 +136,38 @@ const AddProductForm = ({ hidden, hiddenStateUpdater, refreshProducts }) => {
     <div className="mt-8">
       <div className="font-bold text-center">Add Product</div>
       <div className="flex flex-col gap-2 items-center">
+        <label>Name</label>
         <input
           type="text"
           name="productName"
-          placeholder="Name"
+          placeholder="Be creative!"
           value={formData.productName}
           onChange={handleChange}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Price</label>
         <input
           type="number"
           name="price"
-          placeholder="Price"
+          placeholder="0"
           value={formData.price}
           onChange={handleChange}
           className="input input-bordered w-full max-w-xs"
         />
-        <input
-          type="text"
+        <label>Category</label>
+        <select
           name="productCategory"
-          placeholder="Category"
           value={formData.productCategory}
           onChange={handleChange}
           className="input input-bordered w-full max-w-xs"
-        />
+        >
+          <option value="" disabled>
+            Select a category
+          </option>
+          <option value="Drink">Drink</option>
+          <option value="Snack">Snack</option>
+          <option value="Merchandise">Merchandise</option>
+        </select>
         <div className="flex gap-2">
           <div className="btn" onClick={handleAdd}>
             Add Product
