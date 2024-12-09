@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { format, parseISO } from 'date-fns';
 import axios from "axios";
 
 const DeleteAdmissionForm = ({ admissionObj, hiddenStateUpdater, refreshAdmissions }) => {
@@ -39,6 +38,14 @@ const UpdateAdmissionForm = ({ admissionObj, hiddenStateUpdater, refreshAdmissio
   const [duration, setDuration] = useState(admissionObj.duration);
   const [fee, setFee] = useState(admissionObj.fee);
 
+  const [customerIDs, setCustomerIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getCustomers").then((res) => {
+      setCustomerIDs(res.data)
+    })
+  }, [])
+
   const handleUpdate = () => {
     axios.put(`/updateAdmission/${admissionObj.admissionID}`, { customerID, date, duration, fee }).then(() => {
       refreshAdmissions();
@@ -51,13 +58,18 @@ const UpdateAdmissionForm = ({ admissionObj, hiddenStateUpdater, refreshAdmissio
       <div className="font-bold text-center">Update Admission</div>
       <div className="flex flex-col gap-2 items-center">
         <label>Customer ID</label>
-        <input
-          type="number"
-          placeholder=""
+        <select
           value={customerID}
           onChange={(e) => setCustomerID(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Customer ID</option>
+          {customerIDs.map((customer) => (
+            <option key={customer.customerID} value={customer.customerID}>
+              {customer.customerID} - {customer.name}
+            </option>
+          ))}
+        </select>
         <label>Date</label>
         <input
           type="date"
@@ -97,6 +109,14 @@ const AddAdmissionForm = ({ hidden, hiddenStateUpdater, refreshAdmissions }) => 
   const [duration, setDuration] = useState('');
   const [fee, setFee] = useState('');
 
+  const [customerIDs, setCustomerIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getCustomers").then((res) => {
+      setCustomerIDs(res.data)
+    })
+  }, [])
+
   const handleAdd = () => {
     axios.post('/addAdmission', { customerID, admissionDate, duration, fee }).then(() => {
       refreshAdmissions();
@@ -115,13 +135,18 @@ const AddAdmissionForm = ({ hidden, hiddenStateUpdater, refreshAdmissions }) => 
       <div className="font-bold text-center">Add Admission</div>
       <div className="flex flex-col gap-2 items-center">
         <label>Customer ID</label>
-        <input
-          type="number"
-          placeholder=""
+        <select
           value={customerID}
           onChange={(e) => setCustomerID(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Customer ID</option>
+          {customerIDs.map((customer) => (
+            <option key={customer.customerID} value={customer.customerID}>
+              {customer.customerID} - {customer.name}
+            </option>
+          ))}
+        </select>
         <label>Date</label>
         <input
           type="date"

@@ -13,7 +13,7 @@ const AddAdoptionForm = ({ hidden, setHidden, refreshAdoptions }) => {
       .post('/addAdoption', { customerID, catID, adoptionDate, adoptionFee })
       .then(() => {
         refreshAdoptions();
-        setHidden(true); // Close the form
+        setHidden(true);
         setCustomerId('');
         setCatId('');
         setDate('');
