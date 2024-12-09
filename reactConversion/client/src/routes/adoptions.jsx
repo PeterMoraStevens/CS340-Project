@@ -3,10 +3,27 @@ import axios from 'axios';
 
 // Add Adoption Form Component
 const AddAdoptionForm = ({ hidden, setHidden, refreshAdoptions }) => {
-  const [customerID, setCustomerId] = useState('');
-  const [catID, setCatId] = useState('');
+  const [customerID, setCustomerID] = useState('');
+  const [catID, setCatID] = useState('');
   const [adoptionDate, setDate] = useState('');
   const [adoptionFee, setFee] = useState('');
+
+  const [customerIDs, setCustomerIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getCustomers").then((res) => {
+      setCustomerIDs(res.data)
+    })
+  }, [])
+
+
+  const [catIDs, setCatIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getCats").then((res) => {
+      setCatIDs(res.data)
+    })
+  }, [])
 
   const handleAdd = () => {
     axios
@@ -14,8 +31,8 @@ const AddAdoptionForm = ({ hidden, setHidden, refreshAdoptions }) => {
       .then(() => {
         refreshAdoptions();
         setHidden(true);
-        setCustomerId('');
-        setCatId('');
+        setCustomerID('');
+        setCatID('');
         setDate('');
         setFee('');
       })
@@ -28,30 +45,44 @@ const AddAdoptionForm = ({ hidden, setHidden, refreshAdoptions }) => {
     <div className="mt-8">
       <div className="font-bold text-center">Add Adoption</div>
       <div className="flex flex-col gap-2 items-center">
-        <input
-          type="number"
-          placeholder="Customer ID"
+        <label>Customer ID</label>
+        <select
           value={customerID}
-          onChange={(e) => setCustomerId(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <input
-          type="number"
-          placeholder="Cat ID"
+          onChange={(e) => setCustomerID(e.target.value)}
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Customer ID</option>
+          {customerIDs.map((customer) => (
+            <option key={customer.customerID} value={customer.customerID}>
+              {customer.customerID} - {customer.name}
+            </option>
+          ))}
+        </select>
+        <label>Cat ID</label>
+        <select
           value={catID}
-          onChange={(e) => setCatId(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
+          onChange={(e) => setCatID(e.target.value)}
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Cat ID</option>
+          {catIDs.map((cat) => (
+            <option key={cat.catID} value={cat.catID}>
+              {cat.catID} - {cat.catName}
+            </option>
+          ))}
+        </select>
+        <label>Date</label>
         <input
           type="date"
-          placeholder="Adoption Date"
+          placeholder="YYYY-MM-DD"
           value={adoptionDate}
           onChange={(e) => setDate(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Fee ($)</label>
         <input
           type="number"
-          placeholder="Fee (in dollars)"
+          placeholder="0"
           value={adoptionFee}
           onChange={(e) => setFee(e.target.value)}
           className="input input-bordered w-full max-w-xs"
@@ -62,8 +93,8 @@ const AddAdoptionForm = ({ hidden, setHidden, refreshAdoptions }) => {
           </div>
           <div className="btn" onClick={() => {
             setHidden(true)
-            setCustomerId('');
-            setCatId('');
+            setCustomerID('');
+            setCatID('');
             setDate('');
             setFee('');
           }}>
@@ -81,6 +112,22 @@ const UpdateAdoptionForm = ({ adoption, setSelectedAdoption, refreshAdoptions })
   const [catID, setCatID] = useState(adoption.catID);
   const [adoptionDate, setAdoptionDate] = useState(adoption.adoptionDate);
   const [adoptionFee, setFee] = useState(adoption.adoptionFee);
+
+  const [customerIDs, setCustomerIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getCustomers").then((res) => {
+      setCustomerIDs(res.data)
+    })
+  }, [])
+
+  const [catIDs, setCatIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getCats").then((res) => {
+      setCatIDs(res.data)
+    })
+  }, [])
 
   const handleUpdate = () => {
     axios
@@ -101,26 +148,44 @@ const UpdateAdoptionForm = ({ adoption, setSelectedAdoption, refreshAdoptions })
     <div className="mt-8">
       <div className="font-bold text-center">Update Adoption</div>
       <div className="flex flex-col gap-2 items-center">
-        <input
-          type="number"
+        <label>Customer ID</label>
+        <select
           value={customerID}
           onChange={(e) => setCustomerID(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <input
-          type="number"
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Customer ID</option>
+          {customerIDs.map((customer) => (
+            <option key={customer.customerID} value={customer.customerID}>
+              {customer.customerID} - {customer.name}
+            </option>
+          ))}
+        </select>
+        <label>Cat ID</label>
+        <select
           value={catID}
           onChange={(e) => setCatID(e.target.value)}
-          className="input input-bordered w-full max-w-xs"
-        />
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Cat ID</option>
+          {catIDs.map((cat) => (
+            <option key={cat.catID} value={cat.catID}>
+              {cat.catID} - {cat.catName}
+            </option>
+          ))}
+        </select>
+        <label>Date</label>
         <input
           type="date"
+          placeholder="YYYY-MM-DD"
           value={adoptionDate}
           onChange={(e) => setAdoptionDate(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Fee ($)</label>
         <input
           type="number"
+          placeholder="0"
           value={adoptionFee}
           onChange={(e) => setFee(e.target.value)}
           className="input input-bordered w-full max-w-xs"
