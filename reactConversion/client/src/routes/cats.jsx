@@ -17,7 +17,7 @@ const DeleteCatForm = ({ catObj, hiddenStateUpdater, refreshCats }) => {
       <div className="flex flex-col gap-2 items-center">
         <div>Are you sure you want to delete this cat?</div>
         <div>Cat ID: {catObj.catID}</div>
-        <div>catName: {catObj.catName}</div>
+        <div>Name: {catObj.catName}</div>
         <div>Description: {catObj.catDescription}</div>
         <div>Age: {catObj.age}</div>
         <div>Breed: {catObj.breed}</div>
