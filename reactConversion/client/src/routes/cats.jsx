@@ -1,134 +1,137 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const DeleteCatForm = ({ catObj, hiddenStateUpdater }) => {
+const DeleteCatForm = ({ catObj, hiddenStateUpdater, refreshCats }) => {
   if (!catObj) return null;
+
+  const handleDelete = () => {
+    axios.delete(`/deleteCat/${catObj.catID}`).then(() => {
+      refreshCats();
+      hiddenStateUpdater(null);
+    });
+  };
 
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Delete Cat</div>
       <div className="flex flex-col gap-2 items-center">
         <div>Are you sure you want to delete this cat?</div>
-        <div>Cat ID: {catObj.CatID}</div>
-        <div>Name: {catObj.Name}</div>
-        <div>Description: {catObj.Description}</div>
-        <div>Age: {catObj.Age}</div>
+        <div>Cat ID: {catObj.catID}</div>
+        <div>catName: {catObj.catName}</div>
+        <div>Description: {catObj.catDescription}</div>
+        <div>Age: {catObj.age}</div>
+        <div>Breed: {catObj.breed}</div>
+        <div>Adopted: {catObj.adopted ? 'Yes' : 'No'}</div>
         <div className="flex gap-2">
-          <div
-            className="btn"
-            onClick={() => {
-              // Handle delete logic here
-              hiddenStateUpdater(null);
-            }}
-          >
-            Confirm Delete
-          </div>
-          <div className="btn" onClick={() => hiddenStateUpdater(null)}>
-            Cancel
-          </div>
+          <div className="btn" onClick={handleDelete}>Confirm Delete</div>
+          <div className="btn" onClick={() => hiddenStateUpdater(null)}>Cancel</div>
         </div>
       </div>
     </div>
   );
 };
 
-const UpdateCatForm = ({ catObj, hiddenStateUpdater }) => {
+const UpdateCatForm = ({ catObj, hiddenStateUpdater, refreshCats }) => {
   if (!catObj) return null;
 
+  const [catName, setName] = useState(catObj.catName);
+  const [catDescription, setDescription] = useState(catObj.catDescription);
+  const [age, setAge] = useState(catObj.age);
+  const [breed, setBreed] = useState(catObj.breed);
+  const [adopted, setAdopted] = useState(catObj.adopted);
+
   const breeds = [
-    "Domestic Shorthair",
-    "Siamese",
-    "Maine Coon",
-    "Calico",
-    "Persian",
-    "Bengal",
-    "Sphynx",
-    "Ragdoll",
-    "Other",
+    'Domestic Shorthair', 'Siamese', 'Maine Coon', 'Calico',
+    'Persian', 'Bengal', 'Sphynx', 'Ragdoll', 'Other',
   ];
+
+  const handleUpdate = () => {
+    axios.put(`/updateCat/${catObj.catID}`, { catName, catDescription, age, breed, adopted }).then(() => {
+      refreshCats();
+      hiddenStateUpdater(null);
+    });
+  };
 
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Update Cat</div>
       <div className="flex flex-col gap-2 items-center">
-        <div>Cat ID: {catObj.CatID}</div>
-        <input
-          type="text"
-          placeholder="Name"
-          defaultValue={catObj.Name}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <textarea
-          placeholder="Description"
-          defaultValue={catObj.Description}
-          className="textarea textarea-bordered w-full max-w-xs"
-        />
-        <input
-          type="number"
-          placeholder="Age"
-          defaultValue={catObj.Age}
-          className="input input-bordered w-full max-w-xs"
-        />
-        <select
-          defaultValue={catObj.Breed}
-          className="select select-bordered w-full max-w-xs"
-        >
-          {breeds.map((breed, index) => (
-            <option key={index} value={breed}>
-              {breed}
-            </option>
-          ))}
+        <label>Name</label>
+        <input type="text" placeholder="Be creative!" className="input input-bordered w-full max-w-xs" value={catName} onChange={(e) => setName(e.target.value)} />
+        <label>Description</label>
+        <textarea placeholder="What does your cat like to do? Make your cat stand out!" value={catDescription} className="textarea textarea-bordered w-full max-w-xs" onChange={(e) => setDescription(e.target.value)} />
+        <label>Age</label>
+        <input type="number" placeholder="0" className="input input-bordered w-full max-w-xs" value={age} onChange={(e) => setAge(e.target.value)} />
+        <label>Breed</label>
+        <select value={breed} onChange={(e) => setBreed(e.target.value)} className="select select-bordered w-full max-w-xs">
+          {breeds.map((b) => <option key={b} value={b}>{b}</option>)}
         </select>
-        <input
-          type="checkbox"
-          defaultChecked={catObj.Adopted}
-          className="checkbox"
-        /> Adopted
+        <div>
+          <input type="checkbox" checked={adopted} onChange={(e) => setAdopted(e.target.checked)} />
+          Adopted
+        </div>
         <div className="flex gap-2">
-          <div className="btn">Update Cat</div>
-          <div className="btn" onClick={() => hiddenStateUpdater(null)}>
-            Cancel
-          </div>
+          <div className="btn" onClick={handleUpdate}>Update Cat</div>
+          <div className="btn" onClick={() => hiddenStateUpdater(null)}>Cancel</div>
         </div>
       </div>
     </div>
   );
 };
 
-const AddCatForm = ({ hidden, hiddenStateUpdater }) => {
+const AddCatForm = ({ hidden, hiddenStateUpdater, refreshCats }) => {
   if (hidden) return null;
 
   const breeds = [
-    "Domestic Shorthair",
-    "Siamese",
-    "Maine Coon",
-    "Calico",
-    "Persian",
-    "Bengal",
-    "Sphynx",
-    "Ragdoll",
-    "Other",
+    'Domestic Shorthair', 'Siamese', 'Maine Coon', 'Calico',
+    'Persian', 'Bengal', 'Sphynx', 'Ragdoll', 'Other',
   ];
+  const [catName, setName] = useState('');
+  const [catDescription, setDescription] = useState('');
+  const [age, setAge] = useState('');
+  const [breed, setBreed] = useState('Domestic Shorthair');
+  const [adopted, setAdopted] = useState(false);
+
+  const handleAdd = () => {
+    axios.post('/addCat', { catName, catDescription, age, breed, adopted }).then(() => {
+      refreshCats();
+      hiddenStateUpdater(true);
+      setName('');
+      setDescription('');
+      setAge('');
+      setBreed('Domestic Shorthair');
+      setAdopted(false);
+    });
+  };
 
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Add Cat</div>
       <div className="flex flex-col gap-2 items-center">
-        <input type="text" placeholder="Name" className="input input-bordered w-full max-w-xs" />
-        <textarea placeholder="Description" className="textarea textarea-bordered w-full max-w-xs" />
-        <input type="number" placeholder="Age" className="input input-bordered w-full max-w-xs" />
-        <select className="select select-bordered w-full max-w-xs">
-          <option value="" disabled selected>
-            Select a breed
-          </option>
-          {breeds.map((breed, index) => (
-            <option key={index} value={breed}>
-              {breed}
-            </option>
-          ))}
+        <label>Name</label>
+        <input type="text" placeholder="Be creative!" value={catName} onChange={(e) => setName(e.target.value)} className="input input-bordered w-full max-w-xs"/>
+        <label>Description</label>
+        <textarea placeholder="What does your cat like to do? Make your cat stand out!" value={catDescription} onChange={(e) => setDescription(e.target.value)} className="textarea textarea-bordered w-full max-w-xs"/>
+        <label>Age</label>
+        <input type="number" placeholder="0" value={age} onChange={(e) => setAge(e.target.value)} className="input input-bordered w-full max-w-xs"/>
+        <label>Breed</label>
+        <select value={breed} onChange={(e) => setBreed(e.target.value)} className="select select-bordered w-full max-w-xs">
+          {breeds.map((b) => <option key={b} value={b}>{b}</option>)}
         </select>
-        <input type="checkbox" className="checkbox" /> Adopted
-        <div className="btn" onClick={() => hiddenStateUpdater(true)}>
-          Cancel
+        <div>
+          <input type="checkbox" checked={adopted} onChange={(e) => setAdopted(e.target.checked)} />
+          Adopted
+        </div>
+        <div className="flex gap-2">
+          <div className="btn" onClick={handleAdd}>Add Cat</div>
+          <div className="btn" onClick={() => {
+            hiddenStateUpdater(true)
+            setName('');
+            setDescription('');
+            setAge('');
+            setBreed('Domestic Shorthair');
+            setAdopted(false);
+          }}>Cancel</div>
         </div>
       </div>
     </div>
@@ -138,58 +141,23 @@ const AddCatForm = ({ hidden, hiddenStateUpdater }) => {
 const Cats = () => {
   const [selectedCat, setSelectedCat] = useState(null);
   const [newCatFormHidden, setNewCatFormHidden] = useState(true);
-  const [cats, setCats] = useState([
-    {
-      CatID: 1,
-      Name: 'Luna',
-      Description: 'A shy black cat who takes time to warm up but loves head scratches.',
-      Age: 2,
-      Breed: 'Domestic Shorthair',
-      Adopted: false,
-    },
-    {
-      CatID: 2,
-      Name: 'Peanut',
-      Description: 'A playful Siamese who loves to chase feather toys.',
-      Age: 1,
-      Breed: 'Siamese',
-      Adopted: true,
-    },
-    {
-      CatID: 2,
-      Name: 'Bella',
-      Description: 'A calm and affectionate Maine Coon who enjoys lounging in sunny spots.',
-      Age: 3,
-      Breed: 'Maine Coon',
-      Adopted: true,
-    },
-    {
-      CatID: 2,
-      Name: 'Max',
-      Description: 'A sweet calico who loves snuggling on laps.',
-      Age: 3,
-      Breed: 'Calico',
-      Adopted: false,
-    },
-  ]);
+  const [cats, setCats] = useState([]);
+
+  const refreshCats = () => {
+    axios.get('/getCats').then((res) => setCats(res.data));
+  };
+
+  useEffect(() => {
+    refreshCats();
+  }, []);
 
   return (
     <div>
-      <div className="overflow-x-auto max-w-[85%] mx-auto mt-8">
-        <table className="table" hidden={selectedCat || !newCatFormHidden}>
+      <div className="overflow-x-auto max-w-[85%] mx-auto mt-8" hidden={selectedCat !== null || !newCatFormHidden}>
+        <table className="table">
           <thead>
             <tr>
-              <th>
-                <button
-                  className="btn"
-                  onClick={() => {
-                    setNewCatFormHidden(false);
-                    setSelectedCat({});
-                  }}
-                >
-                  New
-                </button>
-              </th>
+              <th><button className="btn" onClick={() => setNewCatFormHidden(false)}>New</button></th>
               <th />
               <th>Cat ID</th>
               <th>Name</th>
@@ -201,47 +169,31 @@ const Cats = () => {
           </thead>
           <tbody>
             {cats.map((cat) => (
-              <tr key={cat.CatID}>
-                <th>
-                  <div
-                    className="btn"
-                    onClick={() => {
-                      setSelectedCat({ ...cat, action: 'update' });
-                      setNewCatFormHidden(true);
-                    }}
-                  >
-                    Edit
-                  </div>
-                </th>
+              <tr key={cat.catID}>
                 <td>
-                  <div
-                    className="btn"
-                    onClick={() => {
-                      setSelectedCat({ ...cat, action: 'delete' });
-                      setNewCatFormHidden(true);
-                    }}
-                  >
-                    Delete
-                  </div>
+                  <button className="btn" onClick={() => setSelectedCat({ ...cat, type: 'update' })}>Edit</button>
                 </td>
-                <td>{cat.CatID}</td>
-                <td>{cat.Name}</td>
-                <td>{cat.Description}</td>
-                <td>{cat.Age}</td>
-                <td>{cat.Breed}</td>
-                <td>{cat.Adopted ? 'Yes' : 'No'}</td>
+                <td>
+                  <button className="btn" onClick={() => setSelectedCat({ ...cat, type: 'delete' })}>Delete</button>
+                </td>
+                <td>{cat.catID}</td>
+                <td>{cat.catName}</td>
+                <td>{cat.catDescription}</td>
+                <td>{cat.age}</td>
+                <td>{cat.breed}</td>
+                <td>{cat.adopted ? 'Yes' : 'No'}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <AddCatForm hidden={newCatFormHidden} hiddenStateUpdater={setNewCatFormHidden} />
-      {selectedCat?.action === 'update' && (
-        <UpdateCatForm catObj={selectedCat} hiddenStateUpdater={setSelectedCat} />
+      {selectedCat && selectedCat.type === 'delete' && (
+        <DeleteCatForm catObj={selectedCat} hiddenStateUpdater={setSelectedCat} refreshCats={refreshCats} />
       )}
-      {selectedCat?.action === 'delete' && (
-        <DeleteCatForm catObj={selectedCat} hiddenStateUpdater={setSelectedCat} />
+      {selectedCat && selectedCat.type === 'update' && (
+        <UpdateCatForm catObj={selectedCat} hiddenStateUpdater={setSelectedCat} refreshCats={refreshCats} />
       )}
+      <AddCatForm hidden={newCatFormHidden} hiddenStateUpdater={setNewCatFormHidden} refreshCats={refreshCats} />
     </div>
   );
 };
