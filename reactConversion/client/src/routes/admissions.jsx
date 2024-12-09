@@ -50,15 +50,15 @@ const UpdateAdmissionForm = ({ admissionObj, hiddenStateUpdater, refreshAdmissio
     <div className="mt-8">
       <div className="font-bold text-center">Update Admission</div>
       <div className="flex flex-col gap-2 items-center">
-        <label>Customer ID </label>
+        <label>Customer ID</label>
         <input
           type="number"
-          placeholder="1"
+          placeholder=""
           value={customerID}
           onChange={(e) => setCustomerID(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
-        <label>Date </label>
+        <label>Date</label>
         <input
           type="date"
           placeholder="YYYY-MM-DD"
@@ -66,18 +66,18 @@ const UpdateAdmissionForm = ({ admissionObj, hiddenStateUpdater, refreshAdmissio
           onChange={(e) => setDate(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
-        <label>Duration (minutes) </label>
+        <label>Duration (minutes)</label>
         <input
           type="number"
-          placeholder="30"
+          placeholder="0"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
-        <label>Fee (dollars) $</label>
+        <label>Fee ($)</label>
         <input
           type="number"
-          placeholder="10.00"
+          placeholder="0"
           value={fee}
           onChange={(e) => setFee(e.target.value)}
           className="input input-bordered w-full max-w-xs"
@@ -114,15 +114,15 @@ const AddAdmissionForm = ({ hidden, hiddenStateUpdater, refreshAdmissions }) => 
     <div className="mt-8">
       <div className="font-bold text-center">Add Admission</div>
       <div className="flex flex-col gap-2 items-center">
-        <label>Customer ID </label>
+        <label>Customer ID</label>
         <input
           type="number"
-          placeholder="1"
+          placeholder=""
           value={customerID}
           onChange={(e) => setCustomerID(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
-        <label>Date </label>
+        <label>Date</label>
         <input
           type="date"
           placeholder="YYYY-MM-DD"
@@ -133,18 +133,18 @@ const AddAdmissionForm = ({ hidden, hiddenStateUpdater, refreshAdmissions }) => 
           }}
           className="input input-bordered w-full max-w-xs"
         />
-        <label>Duration (minutes) </label>
+        <label>Duration (minutes)</label>
         <input
           type="number"
-          placeholder="30"
+          placeholder="0"
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
           className="input input-bordered w-full max-w-xs"
         />
-        <label>Fee (dollars) $</label>
+        <label>Fee ($)</label>
         <input
           type="number"
-          placeholder="10.00"
+          placeholder="0"
           value={fee}
           onChange={(e) => setFee(e.target.value)}
           className="input input-bordered w-full max-w-xs"
