@@ -37,22 +37,24 @@ const UpdatePurchaseForm = ({ purchaseObj, hiddenStateUpdater }) => {
     <div className="mt-8">
       <div className="font-bold text-center">Update Purchase</div>
       <div className="flex flex-col gap-2 items-center">
-        <div>Purchase ID: {purchaseObj.PurchaseID}</div>
+        <label>Customer ID</label>
         <input
           type="number"
-          placeholder="Customer ID"
+          placeholder="0"
           defaultValue={purchaseObj.CustomerID}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Date</label>
         <input
           type="date"
-          placeholder="Date"
+          placeholder="YYYY-MM-DD"
           defaultValue={purchaseObj.Date}
           className="input input-bordered w-full max-w-xs"
         />
+        <label>Cost ($)</label>
         <input
           type="number"
-          placeholder="Cost (in dollars)"
+          placeholder="0"
           defaultValue={purchaseObj.Cost}
           className="input input-bordered w-full max-w-xs"
         />
@@ -74,9 +76,12 @@ const AddPurchaseForm = ({ hidden, hiddenStateUpdater }) => {
     <div className="mt-8">
       <div className="font-bold text-center">Add Purchase</div>
       <div className="flex flex-col gap-2 items-center">
-        <input type="number" placeholder="Customer ID" className="input input-bordered w-full max-w-xs" />
-        <input type="date" placeholder="Date" className="input input-bordered w-full max-w-xs" />
-        <input type="number" placeholder="Cost (in dollars)" className="input input-bordered w-full max-w-xs" />
+        <label>Customer ID</label>
+        <input type="number" placeholder="0" className="input input-bordered w-full max-w-xs" />
+        <label>Date</label>
+        <input type="date" placeholder="YYYY-MM-DD" className="input input-bordered w-full max-w-xs" />
+        <label>Cost ($)</label>
+        <input type="number" placeholder="0" className="input input-bordered w-full max-w-xs" />
         <div className="btn" onClick={() => hiddenStateUpdater(true)}>
           Cancel
         </div>
