@@ -32,17 +32,54 @@ const DeleteProductPurchaseForm = ({ productPurchaseObj, hiddenStateUpdater }) =
 const UpdateProductPurchaseForm = ({ productPurchaseObj, hiddenStateUpdater }) => {
   if (!productPurchaseObj) return null;
 
+  const [productID, setProductID] = useState(productPurchaseObj.purchaseID);
+  const [productIDs, setProductIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getProducts").then((res) => {
+      setProductIDs(res.data)
+    })
+  }, [])
+
+  const [purchaseID, setPurchaseID] = useState(productPurchaseObj.purchaseID);
+  const [purchaseIDs, setPurchaseIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getPurchases").then((res) => {
+      setPurchaseIDs(res.data)
+    })
+  }, [])
+
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Update Product Purchase</div>
       <div className="flex flex-col gap-2 items-center">
-        <div>Product Purchase ID: {productPurchaseObj.ProductPurchaseID}</div>
-        <input
-          type="number"
-          placeholder="Purchase ID"
-          defaultValue={productPurchaseObj.PurchaseID}
-          className="input input-bordered w-full max-w-xs"
-        />
+        <label>Product ID</label>
+        <select
+          value={productID}
+          onChange={(e) => setProductID(e.target.value)}
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Product ID</option>
+          {productIDs.map((product) => (
+            <option key={product.productID} value={product.productID}>
+              {product.productID} - {product.name}
+            </option>
+          ))}
+        </select>
+        <label>Purchase ID</label>
+        <select
+          value={purchaseID}
+          onChange={(e) => setPurchaseID(e.target.value)}
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Purchase ID</option>
+          {purchaseIDs.map((purchase) => (
+            <option key={purchase.purchaseID} value={purchase.purchaseID}>
+              {purchase.purchaseID} - {purchase.name}
+            </option>
+          ))}
+        </select>
         <input
           type="number"
           placeholder="Product ID"
@@ -63,12 +100,54 @@ const UpdateProductPurchaseForm = ({ productPurchaseObj, hiddenStateUpdater }) =
 const AddProductPurchaseForm = ({ hidden, hiddenStateUpdater }) => {
   if (hidden) return null;
 
+  const [productID, setProductID] = useState(productPurchaseObj.purchaseID);
+  const [productIDs, setProductIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getProducts").then((res) => {
+      setProductIDs(res.data)
+    })
+  }, [])
+
+  const [purchaseID, setPurchaseID] = useState(productPurchaseObj.purchaseID);
+  const [purchaseIDs, setPurchaseIDs] = useState([]);
+
+  useEffect(() => {
+    axios.get("/getPurchases").then((res) => {
+      setPurchaseIDs(res.data)
+    })
+  }, [])
+
   return (
     <div className="mt-8">
       <div className="font-bold text-center">Add Product Purchase</div>
       <div className="flex flex-col gap-2 items-center">
-        <input type="number" placeholder="Purchase ID" className="input input-bordered w-full max-w-xs" />
-        <input type="number" placeholder="Product ID" className="input input-bordered w-full max-w-xs" />
+      <label>Product ID</label>
+        <select
+          value={productID}
+          onChange={(e) => setProductID(e.target.value)}
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Product ID</option>
+          {productIDs.map((product) => (
+            <option key={product.productID} value={product.productID}>
+              {product.productID} - {product.name}
+            </option>
+          ))}
+        </select>
+        <label>Purchase ID</label>
+        <select
+          value={purchaseID}
+          onChange={(e) => setPurchaseID(e.target.value)}
+          className="select select-bordered w-full max-w-xs"
+        >
+          <option value="" disabled>Select a Purchase ID</option>
+          {purchaseIDs.map((purchase) => (
+            <option key={purchase.purchaseID} value={purchase.purchaseID}>
+              {purchase.purchaseID} - {purchase.name}
+            </option>
+          ))}
+        </select>
         <div className="btn" onClick={() => hiddenStateUpdater(true)}>
           Cancel
         </div>
