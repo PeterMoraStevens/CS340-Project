@@ -131,7 +131,7 @@ const AddProductPurchaseForm = ({ hidden, hiddenStateUpdater }) => {
           <option value="" disabled>Select a Product ID</option>
           {productIDs.map((product) => (
             <option key={product.productID} value={product.productID}>
-              {product.productID} - {product.name}
+              {product.productID} - {product.productName}
             </option>
           ))}
         </select>
@@ -144,7 +144,7 @@ const AddProductPurchaseForm = ({ hidden, hiddenStateUpdater }) => {
           <option value="" disabled>Select a Purchase ID</option>
           {purchaseIDs.map((purchase) => (
             <option key={purchase.purchaseID} value={purchase.purchaseID}>
-              {purchase.purchaseID} - {purchase.name}
+              {purchase.purchaseID} - {purchase.purchaseDate}
             </option>
           ))}
         </select>
